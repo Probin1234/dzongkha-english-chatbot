@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Tibetan:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #efe6d4;
+  --color-surface: #fbf7ef;
+  --color-ink: #1e1914;
+  --color-muted: #6f6256;
+  --color-saffron: #c56a12;
+  --color-lacquer: #8f2e28;
+  --color-line: #e0d3bc;
+  --font-sans: "Source Sans 3", "Segoe UI", sans-serif;
+  --font-dzongkha: "Noto Serif Tibetan", "Noto Sans Tibetan", serif;
+  --radius-card: 1.25rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-saffron) 35%, white);
+  }
+}
+
+@utility font-dzongkha {
+  font-family: var(--font-dzongkha);
+}

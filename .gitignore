@@ -1,0 +1,14 @@
+node_modules
+.output
+.vercel
+.env
+.env.*
+dist
+*.log
+screenshots
+.grok
+artifacts
+AGENTS.md
+startup.sh
+druk-kha.zip
+
