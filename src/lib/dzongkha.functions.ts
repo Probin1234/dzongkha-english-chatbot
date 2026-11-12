@@ -30,7 +30,7 @@ Never write these Tibetan forms:
 
 Use these exact Bhutanese phrases whenever the meaning matches. Do not paraphrase them into Tibetan:
 
-- Hello: སྐུ་གཟུགས་བཟང་པོ། — roman "Kuzu zangpo". Polite: སྐུ་གཟུགས་བཟང་པོ་ལགས། — "Kuzu zangpo la"
+- Hello: སྐུ་གཟུགས་བཟང་པོ་ལགས། — roman MUST be "Kuzuzangpo la". Never spell it ཀུ་ཟུ་བཟང་པོ། and never romanize it "Kuzu zangpo".
 - How are you?: ཁྱོད་ག་དེ་སྦེ་ཡོད། — "Choe gadey bey yoe?"
 - I am fine: ང་ལེགས་ཤོམ་སྦེ་ཡོད། — "Nga lekshom bey yoe"
 - Thank you: བཀའ་དྲིན་ཆེ་ལགས། — "Kadrin chhe la"
@@ -56,6 +56,12 @@ const JEMBA = {
   gloss: "You're welcome.",
 };
 
+const KUZU = {
+  dzongkha: "སྐུ་གཟུགས་བཟང་པོ་ལགས།",
+  roman: "Kuzuzangpo la",
+  gloss: "Hello.",
+};
+
 const TIBETAN_MARKERS = [
   "བཀའ་དྲིན་མེད",
   "ཐུགས་རྗེ",
@@ -65,6 +71,16 @@ const TIBETAN_MARKERS = [
   "ཡོད་རེད",
   "བདེ་པོ་ཡིན",
 ];
+
+function wantsKuzu(text: string) {
+  const t = text
+    .trim()
+    .toLowerCase()
+    .replace(/[.!?]+$/g, "")
+    .trim();
+  if (/^(hi|hello|hey|good morning|good afternoon|good evening)$/.test(t)) return true;
+  return /^(kuzu ?zangpo( la)?|kuzuzangpo( la)?)$/.test(t);
+}
 
 function wantsJemba(text: string) {
   const t = text
@@ -130,6 +146,7 @@ export const replyInDzongkha = createServerFn({ method: "POST" })
   .handler(async ({ data }): Promise<DzongkhaReply | DzongkhaError> => {
     const lastUser = data.messages[data.messages.length - 1]?.content ?? "";
     if (wantsJemba(lastUser)) return { ok: true, ...JEMBA };
+    if (wantsKuzu(lastUser)) return { ok: true, ...KUZU };
 
     const apiKey = process.env.XAI_API_KEY;
     if (!apiKey) {
@@ -189,6 +206,15 @@ export const replyInDzongkha = createServerFn({ method: "POST" })
     }
     if (parsed.dzongkha.includes("བཀའ་དྲིན་མེད")) {
       return { ok: true, ...JEMBA };
+    }
+    if (parsed.dzongkha.includes("ཀུ་ཟུ")) {
+      parsed = {
+        ...parsed,
+        dzongkha: parsed.dzongkha
+          .replaceAll("ཀུ་ཟུ་བཟང་པོ་ལགས", "སྐུ་གཟུགས་བཟང་པོ་ལགས")
+          .replaceAll("ཀུ་ཟུ་བཟང་པོ", "སྐུ་གཟུགས་བཟང་པོ"),
+        roman: parsed.roman.replace(/kuzu\s*zangpo/gi, "Kuzuzangpo"),
+      };
     }
     return { ok: true, ...parsed };
   });

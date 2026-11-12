@@ -335,8 +335,8 @@ export function ChatDesk() {
 function EmptyState({ onPick, disabled }: { onPick: (value: string) => void; disabled: boolean }) {
   return (
     <div className="mx-auto max-w-lg pt-8 sm:pt-16">
-      <p className="font-dzongkha text-4xl leading-tight text-balance sm:text-5xl">ཀུ་ཟུ་བཟང་པོ།</p>
-      <p className="mt-2 text-sm text-muted">Kuzu zangpo — hello.</p>
+      <p className="font-dzongkha text-4xl leading-tight text-balance sm:text-5xl">སྐུ་གཟུགས་བཟང་པོ་ལགས།</p>
+      <p className="mt-2 text-sm text-muted">Kuzuzangpo la — hello.</p>
       <p className="mt-4 max-w-md text-pretty text-ink">
         Type anything in English. Druk Kha answers in Bhutanese Dzongkha, with a pronunciation and
         an English meaning underneath.
