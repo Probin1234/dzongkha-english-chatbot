@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Check, Copy, RotateCcw, Send } from "lucide-react";
+import { Check, Copy, MessageSquarePlus, Send, Trash2 } from "lucide-react";
 import { replyInDzongkha, type ChatTurn } from "@/lib/dzongkha.functions";
 
 type Bubble = {
@@ -10,7 +10,15 @@ type Bubble = {
   gloss?: string;
 };
 
-const STORAGE_KEY = "druk-kha-thread-v1";
+type Chat = {
+  id: string;
+  title: string;
+  updatedAt: number;
+  messages: Bubble[];
+};
+
+const CHATS_KEY = "druk-kha-chats-v1";
+const LEGACY_KEY = "druk-kha-thread-v1";
 const GUIDE_KEY = "druk-kha-guide-v1";
 
 const STARTERS = [
@@ -25,36 +33,76 @@ function newId() {
   return crypto.randomUUID();
 }
 
+function titleFrom(messages: Bubble[], fallback = "New chat") {
+  const first = messages.find((message) => message.role === "user")?.text.trim();
+  if (!first) return fallback;
+  return first.length > 42 ? `${first.slice(0, 42).trimEnd()}…` : first;
+}
+
+function readStore(): { chats: Chat[]; activeId: string | null } {
+  try {
+    const raw = localStorage.getItem(CHATS_KEY);
+    if (raw) {
+      const data = JSON.parse(raw) as { chats?: Chat[]; activeId?: string | null };
+      const chats = Array.isArray(data.chats) ? data.chats.slice(0, 40) : [];
+      const activeId =
+        typeof data.activeId === "string" && chats.some((chat) => chat.id === data.activeId)
+          ? data.activeId
+          : (chats[0]?.id ?? null);
+      return { chats, activeId };
+    }
+    const legacy = localStorage.getItem(LEGACY_KEY);
+    if (legacy) {
+      const parsed = JSON.parse(legacy) as Bubble[];
+      localStorage.removeItem(LEGACY_KEY);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        const id = newId();
+        return {
+          chats: [
+            {
+              id,
+              title: titleFrom(parsed),
+              updatedAt: Date.now(),
+              messages: parsed.slice(-40),
+            },
+          ],
+          activeId: id,
+        };
+      }
+    }
+  } catch {
+    /* ignore broken storage */
+  }
+  return { chats: [], activeId: null };
+}
+
 export function ChatDesk() {
-  const [messages, setMessages] = useState<Bubble[]>([]);
+  const [chats, setChats] = useState<Chat[]>([]);
+  const [activeId, setActiveId] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [guide, setGuide] = useState(true);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
+  const [listOpen, setListOpen] = useState(false);
   const scroller = useRef<HTMLDivElement>(null);
   const field = useRef<HTMLTextAreaElement>(null);
 
+  const messages = chats.find((chat) => chat.id === activeId)?.messages ?? [];
+
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved) as Bubble[];
-        if (Array.isArray(parsed)) setMessages(parsed.slice(-40));
-      }
-      const guideSaved = localStorage.getItem(GUIDE_KEY);
-      if (guideSaved === "0") setGuide(false);
-    } catch {
-      /* ignore broken storage */
-    }
+    const stored = readStore();
+    setChats(stored.chats);
+    setActiveId(stored.activeId);
+    if (localStorage.getItem(GUIDE_KEY) === "0") setGuide(false);
     setHydrated(true);
   }, []);
 
   useEffect(() => {
     if (!hydrated) return;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
-  }, [messages, hydrated]);
+    localStorage.setItem(CHATS_KEY, JSON.stringify({ chats, activeId }));
+  }, [chats, activeId, hydrated]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -67,19 +115,84 @@ export function ChatDesk() {
     node.scrollTo({ top: node.scrollHeight, behavior: "smooth" });
   }, [messages, pending]);
 
+  function putMessages(chatId: string, nextMessages: Bubble[], title?: string) {
+    setChats((current) => {
+      const found = current.find((chat) => chat.id === chatId);
+      if (!found) return current;
+      const next: Chat = {
+        ...found,
+        messages: nextMessages.slice(-40),
+        title: title ?? titleFrom(nextMessages, found.title),
+        updatedAt: Date.now(),
+      };
+      return [next, ...current.filter((chat) => chat.id !== chatId)];
+    });
+  }
+
+  function startChat() {
+    if (pending) return;
+    if (messages.length === 0) {
+      setListOpen(false);
+      field.current?.focus();
+      return;
+    }
+    setActiveId(null);
+    setDraft("");
+    setError(null);
+    setListOpen(false);
+    field.current?.focus();
+  }
+
+  function openChat(id: string) {
+    if (pending || id === activeId) return;
+    setActiveId(id);
+    setDraft("");
+    setError(null);
+    setListOpen(false);
+  }
+
+  function removeChat(id: string) {
+    if (pending) return;
+    const next = chats.filter((chat) => chat.id !== id);
+    setChats(next);
+    if (id === activeId) {
+      setActiveId(next[0]?.id ?? null);
+      setDraft("");
+      setError(null);
+    }
+  }
+
   async function send(text: string) {
     const trimmed = text.trim();
     if (!trimmed || pending) return;
     setError(null);
     setDraft("");
     const userBubble: Bubble = { id: newId(), role: "user", text: trimmed };
-    const next = [...messages, userBubble];
-    setMessages(next);
+    const existing = activeId && chats.some((chat) => chat.id === activeId) ? activeId : newId();
+    const created = existing !== activeId;
+    const prior = chats.find((chat) => chat.id === existing)?.messages ?? [];
+    const withUser = [...prior, userBubble];
+    if (created) {
+      const chat: Chat = {
+        id: existing,
+        title: titleFrom(withUser),
+        updatedAt: Date.now(),
+        messages: withUser,
+      };
+      setChats((current) => [chat, ...current].slice(0, 40));
+      setActiveId(existing);
+    } else {
+      putMessages(
+        existing,
+        withUser,
+        prior.some((message) => message.role === "user") ? undefined : titleFrom(withUser),
+      );
+    }
     setPending(true);
 
-    const turns: ChatTurn[] = next.slice(-8).map((message) => ({
+    const turns: ChatTurn[] = withUser.slice(-8).map((message) => ({
       role: message.role,
-      content: message.role === "assistant" ? message.text : message.text,
+      content: message.text,
     }));
 
     try {
@@ -88,8 +201,8 @@ export function ChatDesk() {
         setError(result.error);
         return;
       }
-      setMessages((current) => [
-        ...current,
+      putMessages(existing, [
+        ...withUser,
         {
           id: newId(),
           role: "assistant",
@@ -116,50 +229,76 @@ export function ChatDesk() {
     }
   }
 
-  function clearThread() {
-    setMessages([]);
-    setError(null);
-    setDraft("");
-  }
-
   return (
     <div className="flex min-h-dvh flex-col bg-bg text-ink">
       <header className="border-b border-line bg-surface">
-        <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-          <div className="min-w-0">
-            <p className="text-xs font-semibold tracking-widest text-saffron uppercase">
-              Bhutan
-            </p>
-            <h1 className="text-xl font-semibold tracking-tight text-balance sm:text-2xl">
-              Druk Kha
-            </h1>
+        <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+          <div className="flex min-w-0 items-center gap-2">
+            <button
+              type="button"
+              className="inline-flex min-h-11 items-center rounded-lg px-2 text-sm font-medium lg:hidden"
+              onClick={() => setListOpen((open) => !open)}
+            >
+              Chats
+            </button>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold tracking-widest text-saffron uppercase">Bhutan</p>
+              <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">Druk Kha</h1>
+            </div>
           </div>
-          <p className="font-dzongkha hidden text-right text-lg leading-snug text-ink sm:block">
-            རྫོང་ཁ
-          </p>
+          <button
+            type="button"
+            onClick={startChat}
+            disabled={pending}
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-xl bg-ink px-3 text-sm font-medium text-surface disabled:opacity-40"
+          >
+            <MessageSquarePlus className="size-4" aria-hidden="true" />
+            New chat
+          </button>
         </div>
       </header>
 
-      <div className="mx-auto grid w-full max-w-5xl flex-1 grid-cols-1 lg:grid-cols-[16rem_minmax(0,1fr)]">
-        <aside className="hidden border-r border-line px-6 py-8 lg:block">
-          <p className="text-sm leading-relaxed text-pretty text-muted">
-            Write in English. The reply is Bhutanese Dzongkha, the national language of Bhutan —
-            not Tibetan.
-          </p>
-          <ul className="mt-6 space-y-2">
-            {STARTERS.map((starter) => (
-              <li key={starter}>
-                <button
-                  type="button"
-                  disabled={pending}
-                  onClick={() => void send(starter)}
-                  className="w-full rounded-xl border border-line bg-surface px-3 py-2.5 text-left text-sm leading-snug text-ink transition hover:border-saffron disabled:opacity-50"
-                >
-                  {starter}
-                </button>
-              </li>
-            ))}
-          </ul>
+      <div className="mx-auto grid min-h-0 w-full max-w-5xl flex-1 grid-cols-1 lg:grid-cols-[16rem_minmax(0,1fr)]">
+        <aside
+          className={
+            (listOpen ? "block" : "hidden") +
+            " border-b border-line px-4 py-4 lg:block lg:border-r lg:border-b-0 lg:px-4 lg:py-6"
+          }
+        >
+          <p className="text-xs font-semibold tracking-widest text-muted uppercase">Saved chats</p>
+          {chats.length === 0 ? (
+            <p className="mt-3 text-sm text-muted">Your chats stay on this computer.</p>
+          ) : (
+            <ul className="mt-3 space-y-1">
+              {chats.map((chat) => {
+                const selected = chat.id === activeId;
+                return (
+                  <li key={chat.id} className="flex items-center gap-1">
+                    <button
+                      type="button"
+                      disabled={pending}
+                      onClick={() => openChat(chat.id)}
+                      className={
+                        "min-w-0 flex-1 truncate rounded-xl px-3 py-2.5 text-left text-sm disabled:opacity-50 " +
+                        (selected ? "bg-ink text-surface" : "hover:bg-surface")
+                      }
+                    >
+                      {chat.title}
+                    </button>
+                    <button
+                      type="button"
+                      disabled={pending}
+                      onClick={() => removeChat(chat.id)}
+                      className="inline-flex size-10 shrink-0 items-center justify-center rounded-lg text-muted hover:text-lacquer disabled:opacity-40"
+                      aria-label={`Delete ${chat.title}`}
+                    >
+                      <Trash2 className="size-4" aria-hidden="true" />
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </aside>
 
         <section className="flex min-h-0 flex-col">
@@ -232,22 +371,6 @@ export function ChatDesk() {
           </div>
 
           <div className="border-t border-line bg-bg px-4 py-3 sm:px-6">
-            {messages.length > 0 ? (
-              <div className="mb-3 flex gap-2 overflow-x-auto lg:hidden">
-              {STARTERS.slice(0, 3).map((starter) => (
-                <button
-                  key={starter}
-                  type="button"
-                  disabled={pending}
-                  onClick={() => void send(starter)}
-                  className="shrink-0 rounded-full border border-line bg-surface px-3 py-2 text-xs text-ink disabled:opacity-50"
-                >
-                  {starter}
-                </button>
-              ))}
-            </div>
-            ) : null}
-
             {error ? (
               <p className="mb-2 text-sm text-lacquer" role="alert">
                 {error}
@@ -301,8 +424,7 @@ export function ChatDesk() {
               >
                 <span
                   className={
-                    "relative h-5 w-9 rounded-full transition " +
-                    (guide ? "bg-saffron" : "bg-line")
+                    "relative h-5 w-9 rounded-full transition " + (guide ? "bg-saffron" : "bg-line")
                   }
                   aria-hidden="true"
                 >
@@ -315,15 +437,7 @@ export function ChatDesk() {
                 </span>
                 Pronunciation and meaning
               </button>
-              <button
-                type="button"
-                onClick={clearThread}
-                disabled={messages.length === 0 || pending}
-                className="inline-flex min-h-11 items-center gap-1.5 disabled:opacity-40"
-              >
-                <RotateCcw className="size-3.5" aria-hidden="true" />
-                Clear
-              </button>
+              <p>{chats.length === 0 ? "Nothing saved yet" : `${chats.length} saved`}</p>
             </div>
           </div>
         </section>
@@ -335,13 +449,15 @@ export function ChatDesk() {
 function EmptyState({ onPick, disabled }: { onPick: (value: string) => void; disabled: boolean }) {
   return (
     <div className="mx-auto max-w-lg pt-8 sm:pt-16">
-      <p className="font-dzongkha text-4xl leading-tight text-balance sm:text-5xl">སྐུ་གཟུགས་བཟང་པོ་ལགས།</p>
+      <p className="font-dzongkha text-4xl leading-tight text-balance sm:text-5xl">
+        སྐུ་གཟུགས་བཟང་པོ་ལགས།
+      </p>
       <p className="mt-2 text-sm text-muted">Kuzuzangpo la — hello.</p>
       <p className="mt-4 max-w-md text-pretty text-ink">
-        Type anything in English. Druk Kha answers in Bhutanese Dzongkha, with a pronunciation and
-        an English meaning underneath.
+        Type anything in English. Druk Kha answers in Bhutanese Dzongkha. Each conversation is
+        saved on this computer until you delete it.
       </p>
-      <div className="mt-6 flex flex-wrap gap-2 lg:hidden">
+      <div className="mt-6 flex flex-wrap gap-2">
         {STARTERS.slice(0, 3).map((starter) => (
           <button
             key={starter}
