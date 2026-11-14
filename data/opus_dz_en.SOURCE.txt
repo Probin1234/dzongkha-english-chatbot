@@ -1,0 +1,4 @@
+English–Dzongkha lines from OPUS (Tiedemann, 2012).
+Sources: Ubuntu localization v14.10, GNOME localization v1, and the OPUS-100 en-dz set.
+https://opus.nlpl.eu/
+These are Bhutanese Dzongkha translations, kept so the chatbot can copy their spelling.

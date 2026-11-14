@@ -1,0 +1,578 @@
+# english	dzongkha	OPUS Ubuntu v14.10, GNOME v1, and OPUS-100 en-dz. Bhutanese Dzongkha, not Tibetan.
+AisleRiot Solitaire	ཨེསི་ལི་རིའོཊི་ སོ་ལི་ཊེར
+Play many different solitaire games	སོ་ལི་ཊེར་རྩེདམོ་མ་འདྲཝ་ ལེ་ཤ་རྩེ།
+Theme file name	བརྗོད་དོན་གྱི་ཡིག་སྣོད་མིང་།
+The name of the file with the graphics for the cards.	ཏ་སེ་གི་ཚད་རིས་དང་སྦྲགས་པའི་ ཡིག་སྣོད་ཀྱི་མིང་།
+Whether or not to show the toolbar	ལག་ཆས་ཕྲ་རིང་སྟོན་དགོ་ག་མིན་དགོ
+Select the style of control	ཚད་འཛིན་གྱི་བཟོ་རྣམ་སེལ་འཐུ་འབད།
+Select whether to drag the cards or to click on the source then the destination.	ཤོག་བྱང་འཐེན་འདྲུད་འབད་ནི་ཨིན་ན་མེན་ སེལ་འཐུ་འབད། ཡང་ན་ དང་པ་འབྱུང་ཁུངས་དང་ དེ་ལས་འགྲོ་ཡུལ་ལུ་ ཨེབ་གཏང་འབད་ནི་ཨིན་ན།
+Sound	སྒྲ་སྐད།
+Whether or not to play event sounds.	འབྱུང་ལས་ཀྱི་སྒྲ་སྐད་ གཏང་དགོ་ག་མིན་དགོ
+The game file to use	ལག་ལེན་འཐབ་ནིའི་རྩེད་མོའི་ཡིག་སྣོད།
+The name of the scheme file containing the solitaire game to play.	སོ་ལི་ཊེར་རྩེདམོ་ཡོད་པའི་ ལས་འཆར་ཡིག་སྣོད་ཀྱི་མིང་།
+Statistics of games played	རྩེདམོ་རྩེ་ཡོད་པའི་ཚད་རྩིས་ཚུ།
+A list of strings that come in the form of a quintuple: name, wins, total games played, best time (in seconds) and worst time (also in seconds). Unplayed games do not need to be represented.	ཀུའིན་ཊུ་པཱལ་གྱི་ ཚུལ་ནང་ཡོད་མི་ ཡིག་རྒྱུན་གྱི་ཐོ་ཡིག: མིང་ རྒྱལ་ཁ་ རྩེདམོ་རྩེ་ཡོད་པའི་ཡོངས་བསྡོམས་ དུས་ཚོད་དྲག་ཤོས་(སྐར་ཆའི་ནང་) དེ་ལས་ དུས་ཚོད་སྐྱོ་ཤོས་(དེ་ཡང་སྐར་ཆའི་ནང་) མ་རྩེ་བའི་རྩེདམོ་ཚུ་གི་ཁྱད་ཚབ་སྟོན་མི་དགོ
+Recently played games	འཕྲལ་ཁམས་རྩེ་ཡོད་པའི་རྩེདམོ་ཚུ།
+A list of recently played games.	འཕྲལ་ཁམས་རྩེ་ཡོད་པའི་རྩེདམོ་ཚུ་གི་ཐོ།
+New Game	རྩེདམོ་གསརཔ།
+Statistics	ཚད་རྩིས།
+Help	གྲོགས་རམ་
+About	སྐོར་ལས་
+Quit	སྤང་
+Select Game	རྩེདམོ་སེལ་འཐུ་འབད།
+Select	སེལ་འཐུ་འབད་(_S)
+Contents	ནང་དོན་ཚུ།(_C)
+Fullscreen	གསལ་གཞི་གངམ།(_F)
+New Game	རྩེདམོ་གསརཔ།(_N)
+Redo Move	སྤོ་བཤུད་ལོག་འབད།(_R)Reset
+Restart	ལོག་འགོ་བཙུགས།(_R)
+Undo Move	སྤོ་བཤུད་བཤོལ།(_U)
+Deal	བཀྲམ་(_D)
+Leave Fullscreen	གསལ་གཞི་གངམ་བཞག(_L)
+Pause	ཐེམ།(_P)
+This game does not have hint support yet.	རྩེདམོ་འདི་ལུ་ ད་ལྟོ་ཚུན་ཚོད་ བརྡ་མཚོན་མིན་འདུག
+Move %s onto %s.	%sདེ་%sལུ་སྤོ་བཤུད་འབད།
+This game is unable to provide a hint.	རྩེདམོ་འདི་གིས་ བརྡ་མཚོན་ཅིག་བྱིན་མ་ཚུགས།
+Agnes	ཨེག་ནེསི།
+Athena	ཨེ་ཐི་ན།
+Auld Lang Syne	ཨཱལཌི་ ལེང་ སིན།
+Aunt Mary	ཨ་ནི་མེ་རི།
+Backbone	རྒྱབ་རྟེན།
+Bakers Dozen	བེ་ཀརསི་ ཌོ་ཛཱན།
+Bakers Game	བེ་ཀརསི་ རྩེདམོ།
+Beleaguered Castle	བྱང་ཕྱད་ཀྱིས་བསྐོར་བའི་བཙན་རྫོང་།
+Block Ten	ལེབ་དུམ་བཅུ་ཐམ།
+Bristol	བིརིསི་ཊཱོལ།
+Camelot	ཀེ་མི་ལོཊི།
+Canfield	ཀེན་ཕིལཌི།
+Carpet	ས་གདན།
+Chessboard	ཅེསི་རྩེད་གཞོང་།
+Clock	ཆུ་ཚོད་འཁོར་ལོ་སྦོམ།
+Cover	ཁེབས།
+Cruel	གདུག་རྩུབ་ཅན།
+Diamond Mine	ཕ་ལམ་གཏེར་ཁ།
+Doublets	ཌབ་ལེཊི།
+Eagle Wing	ཕྱ་རྒོད་གཤོག་འཐབ།
+Easthaven	ཨིསིཊི་ཧེ་བན།
+Eight Off	བརྒྱད་མེདཔ་བཟོ།
+Elevator	འདྲུད་སྐས།
+Escalator	གློག་ཐེམ།
+First Law	ཁྲིམས་ལུགས་དང་པ།
+Fortress	དགྲ་རྫོང་།
+Fortunes	བསོད་ནམས།
+Fourteen	བཅུ་བཞི།
+Freecell	ཕིརི་སེལ
+Gaps	བར་སྟོང་།
+Gay Gordons	གེ་ གོར་ཌཱོནསི།
+Glenwood	གེལེན་ཝུཌི།
+Gold Mine	གོལཌི་ མཱཡིན་
+Golf	རྒྱུག་རིལ
+Gypsy	ཇིཔ་སི།
+Helsinki	ཧེལ་སིན་ཀི།
+Hopscotch	ཧོཔ་སིཀོཆ།
+Isabel	ཨི་ས་བེལ།
+Jamestown	ཇེམསི་ཊའུན།
+Jumbo	ཇུམ་བོ།
+Kansas	ཀཱན་སཱསི།
+King Albert	ཀིང་ ཨཱལ་བཱརཊི།
+Kings Audience	རྒྱལ་པོའི་མཇལ་ཁ།
+Klondike	ཀོལཱོན་ཌའིཀ
+Labyrinth	ལེ་བི་རིནཐ།
+Lady Jane	ལེ་ཌི་ ཇེན།
+Maze	མེཛི།
+Monte Carlo	མཱོན་ཊི་ ཀར་ལོ།
+Napoleons Tomb	ནེ་པོ་ལིའོནསི་ ཊོམབ་
+Neighbor	ཁྱིམ་མཚེས།
+Odessa	ཨོ་ཌི་ས།
+Osmosis	ཨཱོསི་མོ་སིསི།
+Peek	པིཀ
+Pileon	པི་ལིའོན།
+Plait	པ་ལའེཊི།
+Poker	པོ་ཀར།
+Quatorze	ཀུ་འ་ཊོརཛི།
+Royal East	རོ་ཡལ་ཨིསིཊི།
+Saratoga	ས་ར་ཊོ་ག
+Scorpion	སྡིག་པ་ར་ཛ།
+Scuffle	འཐབ་འཛིང་།
+Seahaven	སི་ཧེ་བེན།
+Sir Tommy	སར་ ཊོ་མི།
+Sol	སཱོལ།
+Spider	སི་པའི་ཌར།
+Spider Three Decks	སི་པའི་ཌར་གསུམ་གྱི་སྦུང་ཚན་ཚུ
+Spiderette	སིཔའི་ཌི་རེཊི།
+Straight Up	ཡར་ཕྲང་།
+Streets And Alleys	ཁྲོམ་ལམ་དང་བར་ལམ།
+Template	ཊེམ་པེལེཊི།
+Ten Across	བཅུ་ཐམ་ཆ་མཉམ།
+Thieves	ཨརཝ།
+Thirteen	བཅུ་གསུམ།
+Thumb And Pouch	མཐེ་བོང་དང་གྲོད་ཁུག
+Treize	ཊིཛི།
+Triple Peaks	ཊི་པཱལ་ པིཀསི།
+Union Square	ཡུ་ནི་ཡཱན་ སི་ཀོའེར།
+Valentine	བེ་ལེན་ཊའིན།
+Westhaven	ཝེསིཊི་ཧེ་བེན།
+Whitehead	ཝའིཊི་ཧེཌི།
+Will O The Wisp	ཝིལ་ ཨོ་ ད་ ཝིསིཔ།
+Yield	ཐོན་འབྲས།
+Yukon	ཡུ་ཀཱོན།
+black joker	ཇོ་ཀར་གནགཔོ།
+red joker	ཇོ་ཀར་དམརཔོ།
+Window width	སྒོ་སྒྲིག་གི་རྒྱ་ཚད།
+Window height	སྒོ་སྒྲིག་གི་མཐོ་ཚད།
+Select the game type to play	རྩེ་ནིའི་རྩེདམོ་གི་དབྱེ་བ་སེལ་འཐུ་འབད
+NAME	མིང་།
+FreeCell Solitaire	ཕིརི་སེལ་ སོ་ལི་ཊེར།
+AisleRiot	ཨེསི་ལི་རིའོཊི།
+Wins:	རྒྱལ་ཁ་:
+Total:	བསྡོམས་:
+Percentage:	བརྒྱ་ཆ་:
+Wins	རྒྱལ་ཁ
+Best:	དྲག་ཤོས་:
+Worst:	སྐྱོ་ཤོས་:
+Time	ཆུ་ཚོད%Id%d
+N/A	ཨེན་/ཨེ།
+Congratulations, you have won!	ལེགས་སོ་ཡོད! ཁྱོད་ཀྱིས་རྒྱལ་ཁ་ཐོབ་ཅི!
+There are no more moves	ཐེབས་བཤུད་འབད་ས་མིན་འདུག
+Main game:	རྩེདམོ་གཙོ་བོ་:
+Card games:	ཏ་སེའི་རྩེདམོ་:
+Card themes:	ཤོག་བྱང་གི་བརྗོད་དོན:
+About AisleRiot	ཨེསི་ལི་རིའོཊི་གི་སྐོར་ལས
+GNOME Games web site	ཇི་ནོམ་རྩེད་མོའི་ཝེབ་ས་ཁོངས
+A scheme exception occurred	དམིགས་གསལ་གྱི་འཆར་ལས་ཅིག་འབྱུང་ཡོདཔ
+Please report this bug to the developers.	འ་ནི་རྐྱེན་འདི་བཟོ་མི་ཚུ་ལུ་སྙན་ཞུ་འབད་གནང་།
+Don't report	སྙན་ཞུ་མ་འབད(_D)
+Report	སྙན་ཞུ(_R)
+Game	རྩེདམོ།(_G)
+View	མཐོང་སྣང་།(_V)
+Control	ཚད་འཛིན།(_C)
+Help	གྲོགས་རམ།(_H)
+Start a new game	རྩེདམོ་གསརཔ་ཅིག་ འགོ་བཙུགས།
+Restart the game	རྩེདམོ་ལོག་འགོ་བཙུགས།
+Play a different game	རྩེདམོ་སོ་སོ་ཅིག་རྩེ།
+Recently Played	འཕྲལ་ཁམས་གཏང་ཡོད་མི་ (_R)
+Statistics	ཚད་རྩིས་ཚུ།(_t)
+Show gameplay statistics	རྩེདམོ་རྩེ་ནིའི་ ཚད་རྩིས་ཚུ་སྟོན།
+Close this window	ཝིན་ཌོ་འདི་ཁ་བསྡམས
+Undo the last move	མཐའ་མཇུག་གི་སྤོ་བཤུད་དེ་ འབད་བཤོལ་འབད།
+Redo the undone move	སྤོ་བཤོལ་འབད་མི་ སྤོ་བཤུད་དེ་ ལོག་འབད།
+Deal next card or cards	ཤུལ་མའི་ ཤོག་བྱང་ ཡང་ན་ ཤོག་བྱང་ཚུ་བཀྲམ་
+Get a hint for your next move	ཁྱོད་ཀྱི་ཤུལ་མའི་སྤོ་སྐོར་གྱི་དོན་ལུ་ བརྡ་མཚོན་ཅིག་ལེན།
+View help for Aisleriot	ཨེསི་ལི་རིའོཊི་གི་དོན་ལུ་ མཐོང་སྣང་སྟོན།
+View help for this game	རྩེདམོ་་འདི་གི་དོན་ལུ་ གྲོགས་རམ་སྟོན།
+About this game	རྩེད་ཐེངས་འདི་གི་སྐོར་ལས།
+Card Style	ཏ་སིའི་བཟོ་རྣམ(_C)
+Toolbar	ལག་ཆས་ཕྲ་རིང་།(_T)
+Show or hide the toolbar	ལག་ཆས་ཕྲ་རིང་དེ་སྟོན་ ཡང་ན་ སྦ་བཞག
+Click to Move	སྤོ་བཤུད་ཀྱི་དོན་ལུ་ ཨེབ་གཏང་འབད།(_C)
+Pick up and drop cards by clicking	མནན་ཏེ་ཤོག་བྱང་ཚུ་ཡར་འཐུ་ནི་དང་བཀོག་ནི་འབད
+Sound	སྒྲ་སྐད།(_S)
+Score:	སྐུགས་གྲངས་:
+Time:	ཆུ་ཚོད་:
+Aisleriot cannot find the last game you played.	ཨེསི་ལང་རིའོཊི་གིས་ ཁྱོད་ཀྱིས་མཐའ་མཇུག་རྩེ་མི་དེ་འཛོལ་མ་ཐོབ།
+This usually occurs when you run an older version of Aisleriot which does not have the game you last played. The default game, Klondike, is being started instead.	འདི་ཡང་ཁྱོད་ཀྱིས་ཧེ་མ་རྩེ་མི་ རྩེདམོ་དེ་མེད་པའི་ ཨེསི་ལི་རིའོཊི་ཐོན་རིམ་རྙིངམ་ཅིག་ ལག་ལེན་འཐབ་པའི་སྐབས་ལུ་འབྱུངམ་ཨིན། དེ་གི་ཚབ་ལུ་ སྔོན་སྒྲིག་རྩེདམོ་ ཀོ་ལཱོན་ཌིཀི་དེ་ འགོ་བཙུགས་དོ།
+Base Card: ~a	གཞི་རྟེན་ཏ་སེ་:~ ཨེ།
+Base Card: Ace	གཞི་རྟེན་ཏ་སེ་:ཨེ་ཀ
+Base Card: Jack	གཞི་རྟེན་ཏ་སེ་:ཇེག
+Base Card: Queen	གཞི་རྟེན་ཏ་སེ་:མེམ།
+Base Card: King	གཞི་རྟེན་ཏ་སེ་:བ་ཙ།
+Stock left:	ཅ་མཛོད་ལྷག་ལུས།
+Stock left: 0	ཅ་མཛོད་ལྷག་ལུས་:༠
+Deal more cards	ཏ་སེ་ཧེང་བཀལ་བཀྲམ།
+Try rearranging the cards	ཏ་སེ་ལོག་སྟེ་བདེ་ཞིབ་འབད།
+Unknown color	མ་ཤེས་པའི་ཚོས་གཞི།
+the ace of clubs	ཅི་རི་ཨེ་ཀ
+the two of clubs	ཅི་རི་༢པ།
+the three of clubs	ཅི་རི་༣པ།
+the four of clubs	ཅི་རི་༤པ།
+the five of clubs	ཅི་རི་༥པ།
+the six of clubs	ཅི་རི་༦པ།
+the seven of clubs	ཅི་རི་༧པ།
+the eight of clubs	ཅི་རི་༨པ།
+the nine of clubs	ཅི་རི་༩པ།
+the ten of clubs	ཅི་རི་༡༠པ།
+the jack of clubs	ཅི་རི་ཇེཀ
+the queen of clubs	ཅི་རི་མེམ།
+the king of clubs	ཅི་རི་བ་ཙ།
+the unknown card	མ་ཤེས་པའི་ཏ་སེ།
+the ace of spades	བོ་ཊེ་ཨེ་ཀ
+the two of spades	བོ་ཊེ་༢པ།
+the three of spades	བོ་ཊེ་༣པ།
+the four of spades	བོ་ཊེ་༤པ།
+the five of spades	བོ་ཊེ་༥པ།
+the six of spades	བོ་ཊེ་༦པ།
+the seven of spades	བོ་ཊེ་༧པ།
+the eight of spades	བོ་ཊེ་༨པ།
+the nine of spades	བོ་ཊེ་༩པ།
+the ten of spades	བོ་ཊེ་༡༠པ།
+the jack of spades	བོ་ཊེ་ཇེཀ
+the queen of spades	བོ་ཊེ་མེམ།
+the king of spades	བོ་ཊེ་བ་ཙ།
+the ace of hearts	པ་ན་ཨེ་ཀ
+the two of hearts	པ་ན་༢པ།
+the three of hearts	པ་ན་༣པ།
+the four of hearts	པ་ན་༤པ།
+the five of hearts	པ་ན་༥པ།
+the six of hearts	པ་ན་༦པ།
+the seven of hearts	པ་ན་༧པ།
+the eight of hearts	པ་ན་༨པ།
+the nine of hearts	པ་ན་༩པ།
+the ten of hearts	པ་ན་༡༠པ།
+the jack of hearts	པ་ན་ཇེཀ
+the queen of hearts	པ་ན་མེམ།
+the king of hearts	པ་ན་བ་ཙ།
+the ace of diamonds	ཨིན་ཊ་ཨེ་ཀ
+the two of diamonds	ཨིན་ཊ་༢པ།
+the three of diamonds	ཨིན་ཊ་༣པ།
+the four of diamonds	ཨིན་ཊ་༤པ།
+the five of diamonds	ཨིན་ཊ་༥པ།
+the six of diamonds	ཨིན་ཊ་༦པ།
+the seven of diamonds	ཨིན་ཊ་༧པ།
+the eight of diamonds	ཨིན་ཊ་༨པ།
+the nine of diamonds	ཨིན་ཊ་༩པ།
+the ten of diamonds	ཨིན་ཊ་༡༠པ།
+the jack of diamonds	ཨིན་ཊ་ཇེཀ
+the queen of diamonds	ཨིན་ཊ་མེམ།
+the king of diamonds	ཨིན་ཊ་བ་ཙ།
+Three card deals	ཏ་སེ་གསུམ་རེའི་བཀྲམ་སྤེལ།
+Deal another round	སྐོར་ཐེངས་ཅིག་བཀྲམ།
+Redeals left:	གཡོན་ཕྱོགས་ལུ་ ལོག་བཀྲམ།
+Deal a new card from the deck	སྦུང་ཚན་ནང་ལས་ ཏ་སེ་གསརཔ་ཅིག་བཀྲམ།
+Base Card:	གཞི་རྟེན་ཏ་སེ་:
+Reserve left:	གཡོན་ལུ་ཟུར་གསོག་འབད།
+Move waste back to stock	མ་དགོཔ་ཚུ་ ཅ་མཛོད་ནང་ ལོག་སྤོ་བཤུད་འབད།
+Move a card to the Foundation	རྨང་གཞི་གུ་ ཏ་སེ་ཅིག་ སྤོ་བཤུད་འབད།
+Move something into the empty Tableau slot	ཊེབ་ལིའུ་ས་སྒོ་སྟོང་པའི་ནང་ ག་ཅི་ཅིག་ སྤོ་བཤུད་འབད།
+Just because a crosswalk looks like a hopscotch board doesn't mean it is one	རྐང་ཐང་འབད་ལམ་སྐེདཔ་བཏོགསཔ་ད་ ཧོབསི་ཀོཆ་གི་རྩེད་གཞོང་བཟུམ་ མཐོངམ་ཨིན་རུང་ དོན་ལུ་དེ་སྦེ་མེན།
+Look both ways before you cross the street	ལམ་སྐེདཔ་བཏོགས་ཏེ་མ་འགྱོ་བའི་ཧེ་མར་ གཡས་གཡོན་གཉིས་ཆ་ར་ལུ་བལྟ་དགོ
+Have you read the help file?	ཁྱོད་ཀྱིས་གྲོགས་རམ་ཡིག་སྣོད་ ལྷག་ཅི་ག?
+Odessa is a better game. Really.	ཨོ་ཌི་ས་དེ་ རྩེདམོ་ལེགས་ཤོམ་ཅིག་ཨིན། ཐད་རི་འབའ་རི་ཨིན་ན།
+Tourniquets are not recommended unless in the direst emergency	གནམ་མེད་ས་མེད་ ཁག་ཆེཝ་དང་མ་གཏོགས་ རྨ་རས་ལག་ལེན་འཐབ་ནི་མི་འོང་།
+I could sure use a backrub right about now...	ང་གིས་ད་ལྟོ་ར་ བེཀ་རབ་ཅིག་ ངེས་པར་ལག་ལེན་འཐབ་ཚུགས།
+Monitors won't give you Vitamin D -- but sunlight will...	དོ་དམ་པ་ཚུ་གིས་ བི་ཊ་མིན་ཌི་--བྱིན་མི་ཚུགས། དེ་འབདཝ་ད་ ཉི་འོད་ཀྱིས་བྱིན་ཚུགས།
+If you're ever lost and alone in the woods, hug a tree	ཁྱོད་རང་རྐྱངམ་གཅིག་ ནགས་ཚལ་ནང་ ལམ་བྱང་སྟེ་ལུས་པ་ཅིན་ ཤིང་ཅིག་ལུ་ ཕངམ་བཏབ།
+Fishing wire makes bad dental floss	ཉ་སྐུད་ཀྱིས་ ཌེན་ཊཱལ་ཕོལོསི་ བྱང་ཉེས་བཟོཝ་ཨིན།
+Consistency is key	རིམ་མཐུན་དེ་གཙོ་ཆེ།
+When without a stapler, a staple and a ruler will work	བཏབ་ལྕགས་མེད་རུང་ བཏབ་ཁབ་དང་ཐིག་ཤིང་གིས་ ལཱ་འབད་བཏུབ།
+Never blow in a dog's ear	ཤོག་ཟུར་བལྟབ་བལྟབ་ལུ་ ནམ་ཡང་འཕུ་བཏབ་ནི་མི་འོང་།
+Cards remaining: ~a	ཤོག་བྱང་ལྷག་ལུས་ཡོད་མི: ~ཨེ
+Redeal.	བསྐྱར་བཀྲམ།
+Unknown value	མ་ཤེས་པའི་བེ་ལུ།
+Deal a card	ཏ་སེ་ཅིག་བཀྲམ།
+No hint available right now	ད་ལྟོ་བརྡ་མཚོན་མི་འཐོབ་པས།
+Move something on to an empty reserve	ཟུར་གསོག་སྟོངམ་ཅིག་ནང་ ག་ཅི་ཅིག་ སྤོ་བཤུད་འབད།
+Remove the aces	ཨེ་ཀ་ཚུ་ རྩ་བསྐྲད་གཏང་།
+Remove the twos	གཉིས་ཚུ་རྩ་བསྐྲད་གཏང་།
+Remove the threes	གསུམ་ཚུ་རྩ་བསྐྲད་གཏང་།
+Remove the fours	བཞི་ཚུ་རྩ་བསྐྲད་གཏང་།
+Remove the fives	ལྔ་ཚུ་རྩ་བསྐྲད་གཏང་།
+Remove the sixes	དྲུག་ཚུ་རྩ་བསྐྲད་གཏང་།
+Remove the sevens	བདུན་ཚུ་རྩ་བསྐྲད་གཏང་།
+Remove the eights	བརྒྱད་ཚུ་རྩ་བསྐྲད་གཏང་།
+Remove the nines	དགུ་ཚུ་རྩ་བསྐྲད་གཏང་།
+Remove the tens	བཅུ་ཐམ་ཚུ་རྩ་བསྐྲད་གཏང་།
+Remove the jacks	ཇེག་ཚུ་རྩ་བསྐྲད་གཏང་།
+Remove the queens	མེམ་ཚུ་རྩ་བསྐྲད་གཏང་།
+Remove the kings	བ་ཙ་ཚུ་རྩ་བསྐྲད་གཏང་།
+I'm not sure	ང་གཏན་གཏན་མེད།
+Return cards to stock	ཏ་སེ་ཚུ་ཅ་མཛོད་ནང་ལོག་བཙུགས།
+Consider moving something into an empty slot	ས་སྒོ་སྟོངམ་ཅིག་ནང་ ག་ཅི་ཅིག་ སྤོ་ཐབས་འབད།
+No moves are possible. Undo or start again.	སྤོ་བཤུད་འབད་མི་ཚུགས་པས། འབད་བཤོལ་འབད་ ཡང་ན་ ལོག་སྟེ་འགོ་བཙུགས།
+The game has no solution. Undo or start again.	རྩེདམོ་དེ་ལུ་ཐབས་ཤེས་མིན་འདུག འབད་བཤོལ་ ཡང་ན་ ལོག་འགོ་བཙུགས།
+Double click any card to redeal.	བསྐྱར་བཀྲམ་གྱི་དོན་ལུ་ ཏ་སེ་གང་རུང་ཅིག་ལུ་ ཨེབ་གཏང་ཐེངས་གཉིས་འབད།
+No hint available.	བརྡ་མཚོན་གཅིག་ཡང་མི་འཐོབ་པས།
+Place a two in the leftmost slot of row ~a.	གཡས་ཕྱོགས་གྱལ་གྱི་ས་སྒོ་ནང་ལུ་གཉིས་བཞག
+Add to the sequence in row ~a.	གྱལ་རིམ་་ལུ་ཁ་སྐོང་རྐྱབས ~a།
+Randomly Placed Gaps on Redeal	བསྐྱར་བཀྲམ་སྐབས་ གང་བྱུང་སྦེ་བར་སྟོང་བཞག
+Try moving card piles around	ཏ་སེའི་བརྩེགས་ཕུང་ མཐའ་བསྐོར་ཏེ་བསྒྱིར།
+Select a card from the reserve for first foundation pile	རྨང་གཞི་བརྩེགས་ཕུང་དང་པའི་དོན་ལུ་ ཟུར་གསོག་ནང་ལས་ ཏ་སེ་ཅིག་སེལ་འཐུ་འབད།
+Stock left: ~a	ཅ་མཛོད་ལྷག་ལུས་:~ཨེ།
+Deal another card	ཏ་སེ་གཞན་ཅིག་བཀྲམ།
+Move a card or build of cards on to the empty slot	ས་སྒོ་སྟོང་པའི་ནང་ ཏ་སེ་གཅིག་གམ་ ཆག་པ་འབད་སྤོ།
+Deal another hand	སྐོར་ཐེངས་གཞན་ཅིག་བཀྲམ།
+Move card from waste	ཕྱགས་ཧོད་ནང་ལས་ཏ་སེ་སྤོ།
+Move waste to stock	ཕྱགས་ཧོད་ཚུ་ ཅ་མཛོད་ནང་སྤོ།
+Stock remaining: ~a	ཅ་མཛོད་ལྷག་ལུས་ཡོད་མི:~ཨེ།
+Deal a new card	ཏ་སེ་གསརཔ་ཅིག་བཀྲམ་སྤེལ་འབད།
+Try moving cards down from the foundation	ཏ་སེ་ཚུ་ རྨང་གཞི་ནང་ལས་མར་ སྤོ་ཐབས་འབད།
+Single card deals	ཤོག་བྱང་རྐྱང་པ་ཚུ་བཀྲམ།
+No redeals	བསྐྱར་བཀྲམ་འབད་ནི་ཚུ་མེད
+Aim to place the suits in the order which fits the current layout most naturally.	ཏ་སེའི་རིིགས་ཚན་ཚུ་ ད་ལྟོའི་སྒྲིག་བཀོད་ལུ་ རང་བཞིན་གྱིས་མཐུན་སྒྲིག་ཡོད་པའི་ གོ་རིམ་ཐོག་ལུ་ བཞག་ནི་ལུ་དམིགས།
+Redeals left: ~a	གཡོན་ཕྱོགས་ལུ་ལོག་བཀྲམ་ཨིན: ~ཨེ།
+Deal new cards from the deck	སྦུང་ཚན་ནང་ལས་ ཏ་སེ་གསརཔ་བཀྲམ་སྤེལ་འབད།
+something	ག་ཅི་ཅིག
+an empty slot	ས་སྒོ་སྟོངམ་ཅིག
+Place cards on to the Tableau to form poker hands	ཏ་སེ་ཚུ་ མི་གཉིས་ལས་ལྷག་སྟེ་ རྩེ་ནིའི་དོན་ལུ་ ཊེབ་ལིའུ་གུ་བཞག
+Shuffle mode	སྤེལ་བའི་ཐབས་ལམ།
+Deal the cards	ཏ་སེ་ཚུ་བཀྲམ།
+Reshuffle cards	ཏ་སེ་ཚུ་སྤེལ།
+Move waste on to a reserve slot	མ་དགོཔ་ཚུ་ ཟུར་གསོག་ས་སྒོ་ཅིག་ནང་སྤོ།
+Please fill in empty pile first.	དང་པ་རང་ བརྩེགས་ཕུང་སྟོངམ་བཀང་།
+Place something on empty slot	ས་སྒོ་སྟོང་པའི་ནང་ ག་ཅི་ཅིག་བཙུགས།
+Four Suits	རིགས་ཚནབཞི
+Two Suits	རིགས་ཚན་གཉིས
+One Suit	རིགས་ཚན་གཅིག
+Move a card to an empty temporary slot	ཏ་སེ་ཅིག་ གནས་སྐབས་ཀྱི་ ས་སྒོ་སྟོང་པའི་ནང་སྤོ།
+No hint available	བརྡ་མཚོན་མི་འཐོབ་པས།
+Allow temporary spots use	གནས་སྐབས་ཅིག་ ས་ཁོངས་ལག་ལེན་འཐབ་བཅུག
+the foundation	རྨང་གཞི་དེ།
+Deal a card from the deck	སྦུང་ཚན་ནང་ལས་ ཏ་སེ་ཅིག་བཀྲམ།
+Match the top two cards of the waste.	མ་དགོ་པར་བཞག་མི་ལས་ མགོའི་ཞ་སེ་གཉིས་མཐུན་སྒྲིག་འབད།
+Progressive Rounds	ཡར་འཕེལ་ཅན་གྱི་སྐོར་ཐེངས་ཚུ
+Multiplier Scoring	སྒྱུར་བྱེད་སྐུགས་ཚད
+Move a build of cards on to the empty Tableau slot	ཊེབ་ལིའུ་གི་ས་སྒོ་སྟོང་པའི་གུ་ ཏ་སེ་ཐུམ་ཅིག་སྤོ།
+Display some available commands at the top of the screen	ཐོབ་ཚུགས་པའི་བརྡ་བཀོད་ལ་ལུ་ཅིག་ གསལ་གཞིའི་དེ་གི་སྤྱི་ཏོག་གུར་ བཀྲམ་སྟོན་འབད།
+Use a minibuffer-style prompt when possible	ཚུགས་པའི་སྐབས་ལུ་ གནད་ཁོངས་ཆུང་བའི་-བཟོ་རྣམ་གྱི་ནུས་སྤེལ་ཅིག་ལག་ལེན་འཐབ།
+Show partial search results (incremental search)	འཚོལ་ཞིབ་ཀྱི་གྲུབ་འབྲས་ཆ་ཤས་ཅིག་སྟོན།(འཚོལ་ཞིབ།)
+Closing the last view exits the program	མཇུག་མམ་གྱི་མཐོང་སྣང་དེ་ཁ་བསྟམ་མི་དེ་གིས་ ལས་རིམ་ཕྱིར་འཐོན་འབདཝ་ཨིན།
+Prompt for confirmation at exit	ཕྱིར་ཐོན་གུར་ངེས་དཔྱད་ཀྱི་དོན་ལས་ནུས་སྤེལ།
+Pause after downloading files	ཡིག་སྣོད་ཚུ་ཕབ་ལེན་འབད་ཚར་བའི་ཤུལ་ལས་ཐེམ།
+Never	ནམ་ཡང་།
+When an error occurs	འཛོལ་བ་འབྱུང་པའི་སྐབས་ལུ།
+Always	ཨ་རྟག་རང་།
+Use a 'status-line' download indicator for all downloads	ཕབ་ལེན་ཚུ་ཆ་མཉམ་གྱི་དོན་ལུ་ 'གནས་ཚད་-གྲལ་ཐིག' ཕབ་ལེན་གྱི་བརྡ་སྟོན་པ་ཅིག་ ལག་ལེན་འཐབ།
+Advance to the next item after changing the state of a package	ཐུམ་སྒྲིལ་ཅིག་གི་གནས་ལུགས་དེ་བསྒྱུར་བཅོས་འབད་ཚར་བའི་ཤུལ་ལས་ རྣམ་གྲངས་ཤུལ་མམ་ལུ་བསྐྱོད།
+Automatically show why packages are broken	ཐུམ་སྒྲིལ་ཚུ་ག་ཅི་སྦེ་ཆག་འགྱོཝ་ཨིན་ན་ རང་བཞིན་གྱིས་སྟོན།
+The default grouping method for package views	ཐུམ་སྒྲིལ་མཐོང་སྣང་ཚུ་གི་དོན་ལུ་ སྔོན་སྒྲིག་སྡེ་ཚན་བཟོ་ནི་གི་ཐབས་ལམ།
+The default display-limit for package views	ཐུམ་སྒྲིལ་མཐོང་སྣང་ཚུ་གི་དོན་ལུ་ སྔོན་སྒྲིག་བཀྲམ་སྟོད་གྱི་-ཚད།
+The display format for package views	ཐུམ་སྒྲིལ་མཐོང་སྣང་ཚུ་གི་དོན་ལུ་ བཀྲམ་སྟོན་རྩ་སྒྲིག
+The display format for the status line	གནས་ཚད་གྲལ་ཐིག་དེ་གི་དོན་ལུ་ བཀྲམ་སྟོན་རྩ་སྒྲིག
+The display format for the header line	མགོ་ཡིག་གྲལ་ཐིག་གི་དོན་ལུ་ བཀྲམ་སྟོན་རྩ་སྒྲིག
+Automatically upgrade installed packages	གཞི་སྒྲིག་འབད་ཡོད་པའི་ ཐུམ་སྒྲིལ་ཚུ་ རང་བཞིན་གྱིས་ཡར་བསྐྱེད་་འབད།
+Remove obsolete package files after downloading new package lists	ཐུམ་སྒྲིལ་གསརཔ་གི་ཐོ་ཡིག་ཚུ་ ཕབ་ལེན་འབད་ཚར་བའི་ཤུལ་ལས་ ཕན་མེད་ཐུམ་སྒྲིལ་གྱི་ཡིག་སྣོད་ཚུ་ རྩ་བསྐྲད་གཏང་།
+URL to use to download changelogs	བསྒྱུར་བཅོས་ལོགསི་ ཚུ་ཕབ་ལེན་འབད་ནིའི་དོན་ལུ་ལག་ལེན་འཐབ་་ནི་གི་ཡུ་ཨཱར་ཨེལ།
+Display a preview of what will be done before doing it	འདི་མ་འབད་བའི་ཧེ་མ་འབད་སྲོལ་ཡོད་མི་གི་ སྔོན་བལྟ་ཅིག་བཀྲམ་སྟོན་འབད།
+Forget which packages are "new" whenever the package lists are updated	ཐུམ་སྒྲིལ་ཐོ་ཡིག་ཚུ་དུས་མཐུན་བཟོ་བའི་སྐབས་ལུ་ ཐུམ་སྒྲིལ་ཚུ་ག་"new"ཨིན་ན་སེམས་ལས་བརྗེད་དགོ
+Forget which packages are "new" whenever packages are installed or removed	གཞི་བཙུགས་་ཡང་ན་ རྩ་བསྐྲད་གཏང་པའི་སྐབས་ལུ་ ཐུམ་སྒྲིལ་ཚུ་ག་ "new" གསརཔ་ཨིན་ན་སེམ་ས་ལས་བརྗེད་དགོཔ་ཨིན།
+Do not display a warning when the first change is made in read-only mode	ཐབས་ལམ་རྐྱངམ་ཅིག་-ལྷག་ཟེར་མི་ནང་ལུ་བསྒྱུར་བཅོས་དང་པམ་དེ་བཟོ་བའི་སྐབས་ལུ་ ཉེན་བརྡ་བཀྲམ་སྟོན་མ་འབད།
+Warn when attempting to perform a privileged action as a non-root user	ཁེ་དབང་ཅན་གྱི་བྱ་བ་དེ་ རྩ་བ་མེན་མི་ལག་ལེན་པ་སྦེ་ལཱ་འགན་འགྲུབ་ནི་ལུ་དཔའ་བཅམ་པའི་སྐབས་ལུ་ ཉེན་བརྡ་འབད།
+File to log actions into	ནང་ལུ་བྱ་བ་ཚུ་དྲེན་དེབ་བཀོད་ནིའི་ཡིག་སྣོད།
+Automatically resolve dependencies of a package when it is selected	ཐུམ་སྒྲིལ་ཅིག་གི་རྟེན་འབྲེལ་དེ་ སེལ་འཐུ་འབད་བའི་སྐབས་ལུ་ རང་བཞིན་གྱིས་ཐོག་ལས་མོས་མཐུན་འབད།
+Automatically fix broken packages before installing or removing	ཆག་འགྱོ་ཡོད་པའི་ཐུམ་སྒྲིལ་ཚུ་ གཞི་བཙུགས་ཡང་ན་ རྩ་བསྐྲད་མ་གཏང་པའི་ཧེ་མ་ རང་བཞིན་གྱིས་ཐོག་ལས་ སྒྲིགས།
+Remove unused packages automatically	ལག་ལེན་མ་འཐབ་པར་ཡོད་པའི་ཐུམ་སྒྲིལ་ཚུ་ རང་བཞིན་གྱིས་ཐོག་ལས་རྩ་བསྐྲད་གཏང་།
+Miscellaneous	སྣ་ཚོགས
+Unable to resolve dependencies.	རྟེན་འབྲེལ་ཚུ་མོས་མཐུན་འབད་མ་ཚུགས།
+Fatal error in resolver	མུས་མཐུན་པ་ནང་ཚུབ་ཅན་གྱི་འཛོལ་བ་འབྱུང་ཡོདཔ
+[%d(%d)/...] Resolving dependencies	[%d(%d)/...] རྟེན་འབྲེལ་ཚུ་མོས་མཐུན་འབད་དོ།
+Internal error: unexpected null solution.	ནང་འཁོད་འཛོལ་བ:རེ་འདུན་མེད་པའི་ ཐབས་ཤེས་སྟོང་ཆ།
+Suggest %F	%F གི་བསམ་འཆར་བཀོད།
+Note: "%s", providing the virtual package "%s", is already installed.	དྲན་འཛིན:"%s", བར་ཅུ་ཡལ་ཐུམ་སྒྲིལ་དེ་བྱིན་དོ། "%s",ཧེ་མ་ལས་གཞི་བཙུགས་འབད་དེ་ཡོད།.
+Note: "%s", providing the virtual package "%s", is already going to be installed.	དྲན་འཛིན:"%s", བར་ཅུ་ཡལ་ཐུམ་སྒྲིལ་དེ་བྱིན་དོ། "%s", ཧེ་མ་ལས་གཞི་བཙུགས་འབད་ནི་ཨིན་པས།
+"%s" exists in the package database, but it is not a real package and no package provides it.	"%s" ཐུམ་སྒྲིལ་གནད་སྡུད་གཞི་རྟེན་དེ་ནང་ལུ་བྱུངམ་ཨིན་ དེ་འབདཝ་ད་ ཐུམ་སྒྲིལ་ངོ་མ་མེན་པའི་ཁར་ ཐུམ་སྒྲིལ་ག་གིས་ཡང་འ་ནི་དེ་མི་བྱིན་དོ་ཡོདཔ་ཨིན།
+"%s" is a virtual package provided by:	"%s"དེ་ གིས་བྱིན་མི་ བར་ཅུ་ཡལ་ཐུམ་སྒྲིལ་ཅིག་ཨིན:
+You must choose one to install.	གཞི་བཙུགས་འབད་ནིའི་དོན་ལུ་ ཁྱོད་ཀྱིས་གཅིག་གདམ་ཁ་བརྐྱབ་དགོཔ་ཨིན།
+Note: selecting "%s" instead of the virtual package "%s"	དྲན་འཛིན: "%s"དེ་ བར་ཅུ་ཡལ་ཐུམ་སྒྲིལ་ གྱི་ཚབ་ལུ་སེལ་འཐུ་འབད་དོ། "%s"
+%s is already installed at the requested version (%s)	%s དེ་ ཞུ་བ་ཕུལ་ཡོད་པའི་ཐོན་རིམ་(%s)གུར་ ཧེ་མ་ལས་འདུག
+%s is not currently installed, so it will not be reinstalled.	%s ད་ལྟོ་གཞི་བཙུགས་མ་འབད་བས། དེ་འབདཝ་ལས་ འ་ནི་དེ་སླར་གཞི་བཙུགས་མི་འབད།
+Package %s is not installed, so it will not be removed	ཐུམ་སྒྲིལ་ %s དེ་གཞི་བཙུགས་མ་འབད་བས། དེ་འབདཝ་ལས་ འ་ནི་དེ་རྩ་བསྐྲད་མི་གཏང་།
+Package %s is not installed, cannot forbid an upgrade	ཐུམ་སྒྲིལ་ %s དེ་གཞི་བཙུགས་མ་འབད་བར་ཡོདཔ་ལས་ ཡར་བསྐྱེད་དེ་བཀག་དམ་འབད་མི་ཚུགས།
+Package %s is not upgradable, cannot forbid an upgrade	ཐུམ་སྒྲིལ་ %s དེ་ཡར་བསྐྱེད་མ་འབད་བར་ཡོདཔ་ལས་ ཡར་བསྐྱེད་དེ་བཀག་དམ་འབད་མི་ཚུགས།
+Note: selecting the task "%s: %s" for installation	དྲན་འཛིན: གཞིི་བཙུགས་ཀྱི་དོན་ལུ་ ལཱ་གཡོག ་"%s: %s" དེ་སེལ་འཐུ་འབད་དོ།
+You can only specify a package version with an 'install' command or a 'forbid-version' command.	ཁྱོད་ཀྱིས་ཐུམ་སྒྲིལ་ཐོན་རིམ་དེ་ 'install' བརྡ་བཀོད་ཡང་ན་ 'forbid-version' བརྡ་བཀོད་དང་གཅིག་ཁར་རྐྱངམ་ཅིག་གསལ་བཀོཀད་འབད་ཚུགས།
+You can only specify a package archive with an 'install' command.	ཁྱོད་ཀྱིས་ ཐུམ་སྒྲིལ་ཡིག་མཛོད་དེ་ 'install' བརྡ་བཀོད་དང་གཅིག་ཁར་རྐྱངམ་ཅིག་གསལ་བཀོད་འབད་ཚུགས།
+Couldn't find package "%s", and more than 40 packages contain "%s" in their name.	ཐུམ་སྒྲིལ་ "%s",དེ་ཐོབ་མ་ཚུགས། ༤༠་ལས་ལྷག་པའི་ ཐུམ་སྒྲིལ་ཚུ་གི་མིང་ནང་ལུ་ "%s" དེ་ཡོདཔ་ཨིན།
+Couldn't find package "%s". However, the following packages contain "%s" in their name:	ཐུམ་སྒྲིལ་་"%s" དེ་ཐོབ་མ་ཚུགས། ཨིན་རུང་ འོག་གི་ ཐུམ་སྒྲིལ་ཚུ་གི་མིང་ནང་ལུ་ "%s"དེ་ཡོདཔ་ཨིན:
+Couldn't find any package whose name or description matched "%s"	ཐུམ་སྒྲིལ་གྱི་མིིང་ཡང་ན་ འགྲེལ་བཤད་ཀྱིས་ "%s" དང་མཐུན་སྒྲིག་ཡོད་མི་ག་ཡང་མ་ཐོབ།
+Couldn't find any package matching "%s", and more than 40 packages contain "%s" in their description.	"%s"དང་མཐུན་སྒྲིག་ཡོད་མི་ཐུམ་སྒྲིལ་ག་ཡང་མ་ཐོབ། ཐུམ་སྒྲིལ་༤༠་ལས་ལྷག་ཙམ་ཅིག་གི་ འགྲེལ་བཤད་ནང་ལུ་"%s"་དེ་ཡོདཔ་ཨིན།
+Couldn't find any package matching "%s". However, the following packages contain "%s" in their description:	"%s"དང་མཐུན་སྒྲིག་ཡོད་མི་ཐུམ་སྒྲིལ་ཅིག་ཡང་མ་ཐོབ། ཨིན་རུང་ འོག་གི་ ཐུམ་སྒྲིག་ཚུ་གི་འགྲེལ་བཤད་ཚུ་ནང་ལུ་ "%s" ཡོདཔ་ཨིན:
+Bad action character '%c'	ཡིག་འབྲུའིི་བྱ་བ་བྱང་ཉེས།'%c'
+Changelog of %s	%sགི་བསྒྱུར་བཅོས་དྲན་དེབ།
+Can't execute sensible-pager, is this a working Debian system?	དྲན་ཤེས་ཅན་གྱི་ཤོག་ལེབ་པ་དེ་ ལག་ལེན་འཐབ་མ་ཚུགས། འ་ནི་འདི་ལཱ་གཡོག་འབད་ནིའི་ཌེ་བེ་ཡན་རིམ་ལུགས་ཨིན་ན?
+%s is not an official Debian package, cannot display its changelog.	%s དེ་གཞུང་འབྲེལ་གྱི་ཌེ་བི་ཡཱན་ཐུམ་སྒྲིལ་ཅིག་མེནམ་ལས་ དེ་གི་བསྒྱུར་བཅོས་དྲན་དེབ་བཀྲམ་སྟོན་འབད་མི་ཚུགས།
+Couldn't find a changelog for %s	%s གི་དོན་ལུ་ བསྒྱུར་བཅོས་དྲན་དེབ་ཐོབ་མ་ཚུགས།
+E: The clean command takes no arguments	ཨི: བརྡ་བཀོད་རྩ་བ་ལས་སྒྲུབ་རྟགས་མི་འབག
+Del %s %s [%sB]	%s %s [%sB] བཏོན་གཏང་།
+E: The autoclean command takes no arguments	ཨི:རང་བཞིན་ཡང་དག་བརྡ་བཀོད་གིས་སྒྲུབ་རྟགས་མི་འབག
+Would free %sB of disk space	ཌིཀསི་བར་སྟོང་ %sབི་ རང་དབང་སྦེེ་བཞག་ནིའི་གོ་སྐབས་ཡོད།
+Freed %sB of disk space	ཌིཀསི་བར་སྟོང་གི་་%sབི་ རང་དབང་སབེ་བཞག་ནུག
+Invalid operation %s	ནུས་མེད་བཀོལ་སྤྱོད་ %s
+Unexpected pattern argument following "keep-all"	རེ་འདུན་མེད་པའི་ དཔེ་གཞི་སྒྲུབ་རྟགས་ཀྱི་རྗེས་སུ་འབྲངས་ནི།"keep-all"
+Abort.	བར་བཤོལ།
+download: you must specify at least one package to download	ཕབ་ལེན:ཕབ་ལེན་འབད་ནིའི་དོན་ལུ་ ཁྱོད་ཀྱིས་ཉུང་ཤོས་རང་ཐུམ་སྒྲིལ་གཅིག་གསལ་བཀོད་འབད་དགོཔ་ཨིན།
+Couldn't read source list	འབྱུང་ཁུངས་ཀྱི་ཐོ་ཡིག་ལྷག་མ་ཚུགས།
+Can't find a package named "%s"	"%s"ཟེར་མིང་བཏགས་ཡོད་མི་ཐུམ་སྒྲིལ་དེ་ཐོབ་མ་ཚུགས།
+No downloadable files for %s version %s; perhaps it is a local or obsolete package?	%s ཐོན་རིམ་ %s དེ་གི་དོན་ལུ་ ཕབ་ལེན་འབད་བཏུབ་པའི་ཡིག་སྣོད་ཚུ་མིན་འདུག; ཡང་ཅིན་འ་ནི་དེ་ ཉེ་གནས་ཡང་ན་ ཕན་མེད་ཐུམ་སྒྲིལ་ཚུ་ཨིན་ན?
+No such package "%s"	"%s" བཟུམ་གྱི་ཐུམ་སྒྲིལ་མེད།
+E: The forget-new command takes no arguments	ཨི:བརྗེད་པའི་ བརྡ་བཀོད་གསརཔ་དེ་གིས་སྒྲུབ་རྟགས་མི་འབག
+Would forget what packages are new	ཐུམ་སྒྲིལ་ཚུ་ག་ཆི་གསརཔ་ཨིན་ན་ སེམས་ཁར་ལས་བརྗེད་ནིའི་ཉེན་ཁ་ཡོད།
+There are no Easter Eggs in this program.	ལས་རིམའདི་ནང་་ལུ་ ཨིསི་ཊར་སྒོང་དོག་ཚུ་མེད།
+There really are no Easter Eggs in this program.	ལས་རིམའདི་ནང་ལུ་ ཨིསི་ཊར་སྒོང་དོག་ཚུ་ཐད་རི་འབའ་རི་མིན་འདུག
+Didn't I already tell you that there are no Easter Eggs in this program?	ང་་གིས་ཁྱོད་ལུ་ ལས་རིམ་འདི་ནང་ལུ་ཨིསི་ཊར་སྒོང་དོག་ཚུ་མིན་འདུག་ཟེར་ ཧེ་མ་ལས་རང་མ་སླབ་ག?
+Stop it!	བཀག!
+Okay, okay, if I give you an Easter Egg, will you go away?	བཏུབ་བཏུབ་ ང་གིས་ཁྱོད་ལུ་ཨིསི་ཊར་སྒོང་དོག་འབྱིན་པ་ཅིན་ ཁྱོད་ཀྱིས་འགྱོ་འོག་ག?
+All right, you win.	བཏུབ་ ཁྱོད་ཀྱིས་རྒྱལ་ཁ་ཐོབ།
+What is it? It's an elephant being eaten by a snake, of course.	འདི་ག་ཅི་སྨོ? འདི་སྦུལ་གྱིས་ཟ་ཟ་བའི་གླངམོ་ཆེ་ཨིན་པས།
+Couldn't read list of sources	འབྱུང་ཁུངས་ཚུ་གི་ཐོ་ཡིག་ལྷག་མ་ཚུགས།
+The following packages are BROKEN:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་ཆག་འགྱོ་ནུག:
+The following packages are unused and will be REMOVED:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་ལག་ལེན་མ་འཐབ་མི་ཨིནམ་ལས་ རྩ་བསྐྲད་གཏང་ནི་ཨིན:
+The following packages have been automatically kept back:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་རང་བཞིན་གྱིས་ཐོག་ལས་རྒྱབ་ཁར་ལུ་བཞག་ཡོད:
+The following NEW packages will be automatically installed:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་གསརཔ་ཚུ་ རང་བཞིན་གྱིས་གཞི་བཙུགས་འབད་ཨིན:
+The following packages will be automatically REMOVED:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་རང་བཞིན་གྱིས་རྩ་བསྐྲད་གཏང་ནི་ཨིན:
+The following packages will be DOWNGRADED:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་མར་ཕབ་འབད་ཨིན:
+The following packages have been kept back:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་རྒྱབ་ཁར་ལུ་བཞག་སྟེ་ཡོདཔ་ཨིན:
+The following packages will be REINSTALLED:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་སླར་གཞི་བཙུགས་འབད་ནི་ཨིན:
+The following NEW packages will be installed:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་གསརཔ་དེ་ཚུ་ གཞི་བཙུགས་འབད་ནི་ཨིན།
+The following packages will be REMOVED:	འོག་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་རྩ་བསྐྲད་གཏང་ནི་ཨིན:
+The following packages will be upgraded:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་དེ་ཚུ་ཡར་བསྐྱེད་འབད་ནི་ཨིན:
+The following ESSENTIAL packages will be REMOVED!	འོག་ལུ་ཡོད་མི་་ཉེར་མཁོའི་ཐུམ་སྒྲིལ་ཚུ་རྩ་བསྐྲད་གཏངའོང་!
+The following ESSENTIAL packages will be BROKEN by this action:	འོག་ལུ་ཡོད་མི་་ཉེར་མཁོའི་ཐུམ་སྒྲིལ་ཚུ་ བྱ་བ་འདི་གིས་བཅག་གཏང་འོང་
+WARNING: Performing this action will probably cause your system to break! Do NOT continue unless you know EXACTLY what you are doing!	ཉེན་བརྡ: བྱ་བ་འདི་ལཱ་དགན་འགྲུབ་མི་དེ་གིས་ ཁྱོད་ཀྱི་རིམ་ལུགས་དེ་བཅག་ནིའི་ཉེན་ཁ་ཡོདཔ་ཨིན! ཁྱོད་ཀྱིས་ཁྱོད་ག་ཅི་འབདཝ་ཨིན་ན་ཏག་ཏག་སྦེ་མ་ཤེས་ཚུན་ཚོད་ འཕྲོ་མཐུད་མ་འབད!
+I am aware that this is a very bad idea	འདི་གནས་སྐབས་གནམ་མེད་ས་མེད་བྱང་ཉེས་ཅིག་ཨིན་པས་ཟེར་ང་གིས་ཤེས།
+To continue, type the phrase "%s":	འཕྲོ་མཐུད་ནིའི་དོན་ལུ་ ཚིག་ཚན་"%s"དེ་ཡིག་དཔར་རྐྱབས།:
+*** WARNING *** Ignoring these trust violations because %s::CmdLine::Ignore-Trust-Violations is 'true'!	*** ཉེན་བརྡ་ *** བློ་གཏད་འགལ་བ་འདི་ཚུ་སྣང་མེད་བཞག་དོ་ ག་ཅི་སྦེ་ཟེར་བ་ཅིན་ %s::CmdLine::སྣང་མེད་-བློ་གཏད་-འགལ་བ་དེ་ 'true'!
+*** WARNING *** Ignoring these trust violations because Apt::Get::AllowUnauthenticated is 'true'!	*** ཉེན་བརྡ་ *** བློ་གཏད་འགལ་བ་འདི་ཚུ་སྣང་མེད་བཞག་དོ་ ག་ཅི་སྦེ་ཟེར་བ་ཅིན་ Apt::Get::སྣང་མེད་བློ་གཏད་ཆོག་མི་དེ 'true'!
+Do you want to ignore this warning and proceed anyway?	ཁྱོད་ཀྱིས་ཉེན་བརྡ་དེ་སྣང་མེད་འབད་བཞག་སྟེ་ གང་རུང་སྦེ་འཕྲོ་མཐུད་ནི་ཨིན་ན?
+To continue, enter "%s"; to abort, enter "%s":	འཕྲོ་མཐུད་ནིའི་དོན་ལུ་ "%s";དེ་ཐོ་བཀོད་འབད། བར་བཤོལ་འབད་ནིའི་དོན་ལུ་"%s": དོ་ཐོ་བཀོད་འབད།
+Unrecognized input. Enter either "%s" or "%s".	ངོས་འཛིནམ་འབད་བར་ཡོད་མི་ ཨིན་པུཊི། "%s" ཡང་ན་ "%s" གཉིས་ལས་ག་འབད་རུང་ཅིག་ཐོ་བཀོདའབད།
+The following packages are RECOMMENDED but will NOT be installed:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་འོས་སྦྱོར་འབད་ནུག དེ་འབདཝ་ད་ གཞི་བཙུགས་མི་འབད:
+The following packages are SUGGESTED but will NOT be installed:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་བསམ་འཆར་བཀོད་ཚར་མི་ཚུ་ཨིན་ དེ་འབདཝ་ད་ གཞི་བཙུགས་མི་འབད:
+No packages will be installed, upgraded, or removed.	ཐུམ་སྒྲིལ་ཚུ་གཞི་བཙུགས་དང་ ཡར་བསྐྱེད་ ཡང་ན་ རྩ་བསྐྲད་གཏང་འོང་།
+%lu packages upgraded, %lu newly installed,	%lu ཐུམ་སྒྲིལ་ཚུ་ཡར་བསྐྱེད་འབད་ཡོདཔ། %lu གསརཔ་གཞི་བཙུགས་འབད་ཡོདཔ།
+%lu reinstalled,	%lu སླར་གཞི་བཙུགས་འབད་ཡོདཔ།
+%lu downgraded,	%lu་མར་ཕབ་འབད་ཡོདཔ།
+%lu to remove and %lu not upgraded.	རྩ་བསྐྲད་འབད་ནི་གི་ %lu དང་ %lu ཡར་བསྐྱེད་མ་འབད་བར་ཡོདཔ།
+Need to get %sB/%sB of archives.	ཡིག་མཛོད་ཚུ་གི་%sB/%sB དེ་ལེན་དགོཔ་ཨིན།
+Need to get %sB of archives.	ཡིག་མཛོད་ཚུ་གི་%sB ལེན་དགོཔ་ཨིན།
+After unpacking %sB will be used.	སྒམ་བཤུབ་ཚར་ཞིནམ་ལས་ %sB དེ་ལག་ལེན་འཐབ་འོང་།
+After unpacking %sB will be freed.	སྒམ་བཤུབ་ཚར་ཞིནམ་ལས་%sBདེ་རང་དབང་སྦེ་བཞག་འོང་།
+No packages to show -- enter the package names on the line after 'i'.	ཐུམ་སྒྲིལ་ཚུ་སྟོན་ནི་མེད -- 'i' གི་ཤུལ་ལས་གྲལ་ཐིག་གུར་ཐུམ་སྒྲིལ་ཚུ་གི་མིང་ཐོབཀད་འབད།
+Press Return to continue.	འཕྲོ་མཐུད་ནིའི་དོན་ལུ་ སལར་ལལོག་ལུ་ཨེབ་གཏང་འབད།
+No packages found -- enter the package names on the line after 'c'.	ཐུམ་སྒྲིལ་ཚུ་མ་ཐོབ་་-- 'c'་གི་ཤུལ་ལས་གྲལ་ཐིག་གུར་ཐུམ་སྒྲིལ་དེ་གི་ཚུ་མིང་ཚུ་ཐོ་བཀོད་འབད།
+continue with the installation	གཞི་བཙུགས་དེ་འཕྲོ་མཐུད་འབད།
+abort and quit	བར་བཤོལ་དང་གཤག་ནི།
+show information about one or more packages; the package names should follow the 'i'	གཅིག་ཡང་ན་ དེ་ལས་ལྷག་སྟེ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་གི་སྐོར་ལས་བརྡ་དོན་ཚུ་སྟོན: ཐུམ་སྒྲིལ་མིང་དེ་གིས་ 'i' གི་རྗེས་སུ་འབྲངས་དགོཔ་ཨིན།
+show the Debian changelogs of one or more packages; the package names should follow the 'c'	གཅིག་ཡང་ན་དེ་ལས་ལྷག་སྟེ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་གི་ ཌེ་བི་ཡཱན་ བསྒྱུར་བཅོས་དྲན་དེབ་ཚུ་སྟོན; ཐུམ་སྒྲིལ་མིང་དེ་གིས་ 'c'་གི་རྗེས་སུ་འབྲངས་དགོཔ་ཨིན།
+toggle the display of dependency information	རྟེན་འབྲེལ་བརྡ་དོན་གྱི་བཀྲམ་སྟོན་དེ་སོར་སྟོན་འབད།
+toggle the display of changes in package sizes	བསྒྱུར་བཅོས་ཚུ་གི་བཀྲམ་སྟོན་དེ་ཐུམ་སྒྲིལ་ཚད་ཚུ་གི་ནང་ལུ་སོར་སྟོན་འབད།
+toggle the display of version numbers	ཐོན་རིམ་ཨང་གྲངས་ཚུ་གི་བཀྲམ་སྟོན་དེ་སོར་སྟོན་འབད།
+enter the full visual interface	མཐོང་བའི་ངོས་འདྲ་བ་ཆ་ཚང་དེ་ཐོ་བཀོད་འབད།
+'+' to install packages	ཐུམ་སྒྲིལ་ཚུ་གཞི་བཙུགས་འབད་ནིའི་དོན་ལུ '+'
+'+M' to install packages and immediately flag them as automatically installed	ཐུམ་སྒྲིལ་ཚུ་གཞི་བཙུགས་འབད་ནིའི་དོན་ལུ་ '+M' དང་ དེ་ཚུ་རང་བཞིན་གྱིས་གཞི་བཙུགས་འབད་དེ་ཡོད་དོ་བཟུམ་སྦེ་ དེ་འཕྲལ་ལས་ཟུར་རྟགས་བཀལ།
+'-' to remove packages	ཐུམ་སྒྲིལ་ཚུ་རྩ་བསྐྲད་གཏང་ནིའི་དོན་ལུ་ '-'
+'_' to purge packages	ཐུམ་སྒྲིལ་ཚུ་ཕྱིར་བསྐྲད་འབད་ནིའི་དོན་ལུ་ '_'
+'=' to place packages on hold	ཐུམ་སྒྲིལ་ཚུ་འཆང་ནིའི་གུར་ཞབག་ནིའི་དོན་ལུ་ '='
+':' to keep packages in their current state without placing them on hold	ཐུམ་སྒྲིལ་ཚུ་འཆང་ནིའི་གུར་མ་བཞག་པར་ཁོང་རའི་ད་ལྟོ་གི་གནས་ལུགས་གུར་བཞག་ནིའི་དོན་ལུ་ ':'
+'M' to mark packages as automatically installed	རང་བཞིན་གྱིས་གཞི་བཙུགས་འབད་དེ་ཡོདཔ་བཟུམ་སྦེ་རྟགས་བཀལ་ནིའི་དོན་ལུ་ 'M'
+'m' to mark packages as manually installed	ཐུམ་སྒྲིལ་ཚུ་ལག་ཐོག་ལས་གཞི་བཙུགས་འབད་དེ་ཡོདཔ་བཟུམ་སྦེ་རྟགས་བཀལ་ནིའི་དོན་ལུ་ 'm'
+Commands:	བརྡ་བཀོད:
+Do you want to continue? [Y/n/?]	ཁྱོད་ཀྱིས་འཕྲོ་མཐུད་འབད་ནི་ཨིན་ན་? [Y/n/?]
+Invalid response. Please enter a valid command or '?' for help.	ནུས་མེད་ལན། གྲོགས་རམ་གྱི་དོན་ལུ་ནུས་ཅན་བརྡ་བཀོད་ཡང་ན་ '?' ཅིག་ཐོ་བཀོད་འབད།
+Dependency information will be shown.	རྟེན་འབྲེལ་བྲད་དོན་དེ་སྟོན་འོང་།
+Dependency information will not be shown.	རྟེན་འབྲེལ་བརྡ་དོན་དེ་སྟོན་འོང་།
+Versions will be shown.	ཐོན་རིམ་དེ་སྟོན་འོང་།
+Versions will not be shown.	ཐོབ་རིམ་དེ་སྟོན་འོང་།
+Size changes will be shown.	ཚད་ཀྱི་བསྒྱུར་བཅོས་ཚུ་སྟོན་འོང།
+Size changes will not be shown.	ཚད་ཀྱི་བསྒྱུར་བཅོས་ཚུ་སྟོན་འོང་།
+Unable to open %s for writing	འབྲི་ནིའི་དོན་ལུ་ %s་དེ་ཁ་ཕྱེ་མ་ཚུགས།
+Error writing resolver state to %s	%s མོས་མཐུན་པའི་གནས་ལུགས་འབྲི་ནི་ལུ་ འཛོལ་བ་འདུག
+Resolver state successfully written!	མོས་མཐུན་པའི་གནས་ལུགས་དེ་མཐར་འཁོལ་ཅན་སྦེ་བྲི་ཡི!
+accept the proposed changes	གྲོས་འཆར་བཀོད་ཡོད་པའི་བསྒྱུར་བཅོས་ཚུ་དང་ལེན་འབད།
+reject the proposed changes and search for another solution	གྲོས་འཆར་བཀོད་ཡོད་པའི་བསྒྱུར་བཅོས་ཚུ་དང་ལེན་སྤང་སྟེ་ ཐབས་ཤེས་གཞན་མི་འཚོལ་ཞིབ་འབད།
+give up and quit the program	བཀོག་བཞག་སྦེ་ལས་རིམ་དེ་སྤང་།
+move to the next solution	ཤུལ་མམ་གྱི་ཐབས་ཤེས་ལུ་སྤོ་བཤུད་འབད།
+move to the previous solution	ཧ་མམ་གྱི་ཐབས་ཤེས་ལུ་སྤོ་བཤུད་འབད།
+toggle between the contents of the solution and an explanation of the solution	སོར་སྟོན་
+examine the solution in the visual user interface	ཐབས་ཤེས་དེ་མཐོང་བའི་ལག་ལེན་པ་ངོས་འདྲ་བའི་ནང་ལུ་བརྟག་དཔྱད་འབད།
+adjust the state of the listed packages, where ACTION is one of:	བྱ་བ་དེ་ཅིག་ཨིན་མི་ ཐོ་བཀོད་འབད་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་གི་གནས་ལུགས་དེ་བདེ་སྒྲིག་འབད:
+Adjustments will cause the current solution to be discarded and recalculated as necessary.	བདེ་སྒྲིག་འབད་མི་དེ་གིས་ཉེར་མཁོ་དང་བསྟུན་ ད་ལྟོའི་ཐབས་ཤེས་ཚུ་བཏོན་བཀོག་ནི་དང་བསྐྱར་རྩིས་སྟོན་བཅུགཔ་ཨིན།
+The version %s is available in the following archives:	ཐོན་རིམ་ %s འོག་ལུ་ཡོད་མི་ཡིག་མཛོད་ཚུ་ནང་ལས་འཐོབ་ཚུགསཔ་ཨིན:
+Select the version of %s that should be used:	ལག་ལེན་ཐབ་ནི་ཨིན་མི་ %s གི་ཐོན་རིམ་དེ་སེལ་འཐུ་འབད:
+Invalid response. Please enter an integer between 1 and %d.	ནུས་མེད་ཀྱིི་ལན། ༡ དང་ %d་གི་བར་ནའི་ཧྲིལ་ཨང་དེ་བཙུགས་གནང་།
+Expected at least one package/version pair following '%c'	'%c' གི་རྗེས་སུ་འབྲངས་མི་ ཉུང་ཤོས་རང་ཐུམ་སྒྲིལ་གཅིག་/་ཐོན་རིམ་ཆ་གཅིག་གི་རེ་འདུན་བསྐྱེད་ཅི།
+%s has no version named "%s"	%s ལུ་མིང་"%s" ཟེར་མི་ཐོན་རིམ་མིང་མེད།
+Allowing the removal of %s	%s དེ་རྩ་བསྐྲད་གཏང་བཅུག་དོ།
+Allowing the installation of %s version %s (%s)	%s ཐོན་རིམ་ %s (%s)དེ་གཞི་བཙུགས་འབད་བཅུག་དོ།
+Rejecting the removal of %s	%s རྩ་བསྐྲད་གཏང་ནི་གི་་ དང་ལེན་སྤང་དོ།
+Rejecting the installation of %s version %s (%s)	%s ཐོན་རིམ་%s (%s) གི་བཙུགས་འབད་ནི་དེ་ དང་ལེན་སྤང་དོ།
+No longer requiring the removal of %s	%s རྩབསྐྲད་གཏང་ནི་དེ་ད་ལས་ཕར་ དགོས་མཁོ་མེད།
+No longer requiring the installation of %s version %s (%s)	%s ཐོན་རིམ་ %s (%s)གི་གཞི་བཙུགས་དེ་ད་ལས་ཕར་དགོས་མཁོ་མིན་མེད།
+Requiring the removal of %s	%s རྩ་སྐྲད་གཏང་ནི་ནེ་དགོས་མཁོ་ཡོད།
+Requiring the installation of %s version %s (%s)	%s ཐོན་རིམ་ %s (%s) གི་གཞི་བཙུགས་དེ་དགོས་ཡོད།
+Resolving dependencies...	རྟེན་འབྲེལ་ཚུ་མོས་མཐུན་འབད་དོ།
+The following actions will resolve these dependencies:	འོག་ལུ་ཡོད་མི་བྱ་བ་དེ་གིས་ རྟེན་འབྲེལ་འ་ནི་ཚུ་མོས་མཐུན་འབདཝ་ཨིན།
+Accept this solution? [Y/n/q/?]	ཐབས་ཤེས་འདི་དང་ལེན་འབད་ནི་ཨིན་ན? [Y/n/q/?]
+Abandoning all efforts to resolve these dependencies.	རྟེན་འབྲེལ་འ་ནི་ཚུ་མོས་མཐུན་འབད་ནིའི་དོན་ལུ་ བརྩོན་ཤུགས་འདོར་བའི་སྒང་ཡོད།
+The following commands are available:	འོག་ལུ་ཡོད་མི་བརྡ་བཀོད་ཚུ་འཐོབ་ཚུགས:
+File to write resolver state to:	དེ་ལུ་ མོས་མཐུན་པའི་གནས་ལུགས་འབྲི་ནིའི་དོན་ལུ་ ཡག་སྣོད:
+Invalid response; please enter one of the following commands:	ནུས་མེད་ལན་གསལ། འོག་ལུ་ཡོད་མི་བརྡ་བཀོད་ཚུ་ལས་ཅིག་ཐོ་བཀད་འབད་གནང་:
+No solution found within the allotted time. Try harder? [Y/n]	སྤྲོད་དེ་ཡོད་པའི་དུས་ཚོད་ཀྱི་ནང་འཁོད་ལུ་ཐབས་ཤེས་ཐོབ་མ་ཚུགས། ལྷག་པར་འབད་རྩོལ་བསྐྱེད་ནི་ཨིན་ན? [Y/n]
+Invalid response; please enter 'y' or 'n'.	ནུས་མེད་ལན་གསལ། 'y' ཡང་ན་ 'n'་ཐོ་བཀོད་འབད་གནང་།
+Unable to resolve dependencies! Giving up...	རྟེན་འབྲེལ་མོས་མཐུན་འབད་མ་ཚུགས! བཀོག་བཞག་དོ...
+*** No more solutions available ***	*** ཐབས་ཤེས་དེ་ལལས་མངམ་སྦེ་ཐོབ་མི་ཚུགས། ***
+*** ERROR: search aborted by fatal exception. You may continue searching, but some solutions will be unreachable.	***འཛོལ་བ:ཚུབ་ཆེན་དམིགས་གསལ་གྱིས་འབལ་ཤོལ་འཚོལ།ཁྱོད་ཀྱི་འཕྲོ་འཐུད་དེ་འཚོལ་ཞིབ་འབད དེ་འབདཝ་ད་ཐབས་ཤེས་གཞན་མི་ཚུ་གི་ལྷོད་མི་ཚུགས།
+iconv of %s failed.	%s གི་ངོས་དཔར་ཝི་འཐུས་ཤོར་བྱུང་ཡོདཔ།
+search: You must provide at least one search term	འཚོལ་ཞིབ་འབད: ཁྱོད་ཀྱིས་ཉུང་ཤོས་རང་འཚོལ་ཞིབ་ཀྱི་ལམ་ལུགས་གཅིག་བྱིན་དགོ
+but %s is to be installed.	དེ་འབདཝ་ད་%s དེ་གཞི་བཙུགས་འབད་དགོཔ་ཨིན།
+but %s is installed and it is kept back.	དེ་འབདཝ་ད་ %s དེ་གཞི་བཙུགས་འབད་དེ་རྒྱབ་ཁར་ལུ་བཞག་ཡོད།
+but %s is installed.	དེ་འབདཝ་ད་%s དེ་གཞི་བཙུགས་འབད་ཡི།
+which is a virtual package.	ག་དེ་བར་ཅུ་ཡལ་ཐུམ་སྒྲིལ་སྨོ།
+or	ཡང་ན།
+The following packages have unmet dependencies:	འོག་ལུ་ཡོད་མི་ཐུམ་སྒྲིལ་ཚུ་གིས་གཞན་རྟེན་དང་མ་ཕྱེད་པས:
+Accerciser	འཛུལ་སྤྱོད་འབད་མི།
+Give your application an accessibility workout	ཁྱོད་རའི་ གློག་རིམ་ལུ་ འཛུལ་སྤྱོད་གཏན་འཁེལ་ཅིག་བྱིན་
+Accerciser Accessibility Explorer	འཛུལ་སྤྱོད་འབད་མིའི་ འཛུལ་སྤྱོད་ དཔྱད་ཞིབ་འབད་མི་
+The default plugin layout for the bottom panel	མཇུག་གི་ པེ་ནཱལ་གྱི་དོན་ལུ་ སྔོན་སྒྲིག་ པ་ལག་ཨིན་སྒྲིག་བཀོད་
+The default plugin layout for the top panel	མགོ་གི་ པེ་ནཱལ་གྱི་དོན་ལུ་ སྔོན་སྒྲིག་ པ་ལག་ཨིན་སྒྲིག་བཀོད་
+A list of plugins that are disabled by default	སྔོན་སྒྲིག་གིས་ ལྕོགས་མིན་བཟོ་ཡོད་པའི་ པ་ལག་ཨན་ཚུ་གི་ ཐོ་བཀོད་
+API Browser	ཨེ་པི་ཨའི་ བརའུ་ཟར་
+Browse the various methods of the current accessible	ད་ལྟོའི་ འཛུལ་སྤྱོད་ཀྱི་དོན་ལུ་ ཐབས་ལམ་འདྲ་མིན་སྣ་ཚོགས་ བརྡ་འཚོལ་འབད་
+Hide private attributes	སྒེར་དོན་ཁྱད་ཆོས་ཚུ་ སྦ་བཞག་
+Method	ཐབས་ལམ།
+Property	རྒྱུ་དངོས།
+Value	གནས་གོང་།
+IPython Console	ཨའི་ པ་ཡི་ཐཱོན་ མ་སྒྲོམ་
+Interactive console for manipulating currently selected accessible	ད་ལྟོ་སེལ་འཐུ་འབད་ཡོད་པའི་ འཛུལ་སྤྱོད་ལགལེན་བསྟར་བའི་དོན་ལུ་ ཕན་ཚུན་འབྲེལ་ལྡན་གྱི་ མ་སྒྲོམ་
+Event monitor	འབྱུང་ལས་ལྟ་རྟོག་པ
+Monitor Events	ལྟ་རྟོག་འབད་མི་འབྱུང་ལས་ཚུ།(_M)
+Clear Selection	སེལ་འཐུ་བསལ་བ་ (_L)
+Everything	ཡོད་ཚད་གཅིགཔ།
+Selected application	སེལ་འཐུ་འབད་ཡོད་མི་གློག་རིམ།
+Selected accessible	སེལ་འཐུ་འབད་ཡོད་མི་འཛེལ་སྤྱོད་འབད་བཏུབ།
+Source	འབྱུང་ཁུངས།
+Event Monitor	འབྱུང་ལས་ལྟ་རྟོག་
+Shows events as they occur from selected types and sources	བྱུང་ལས་ཚུ་ སེལ་འཐུ་འབད་ཡོད་པའི་ དབྱེ་བ་དང་འབྱུང་ཁུངས་ཚུ་ ནང་ལས་འབྱུང་དོ་བཟུམ་སྦེ་སྟོནམ་ཨིན་
+Highlight last event entry	མཇུག་གི་ བྱུང་ལས་ཐོ་བཀོད་ གཙོ་དམིགས་འབད་
+Clear event log	སེལ་འཐུ་བསལ་བ་ (_L)
+Child count	ཆ་ལག་ གྱངས་ཁ་
+States	མངའ་སྡེ
+Show	སྟོན་
+Relations	མཐུན་འབྲེལ་ཚུ་
+Attributes	ཁྱད་ཆོས་ཚུ་
+Accessible	འཛུལ་སྤྱོད་འབད་ཚུགས་པ།(_A)
+Perform action	བྱ་བ་འགྲུབ་
+Action	བྱ་བ།(_o)
+ID	ཨའི་ཌི།
+Toolkit	ལག་ཆས་སྒྲོམ།
+Version	ཐོན་རིམ།
+Application	གློག་རིམ་ (_P)
+Collection	བསྡུ་གསོག་ (_C)
+Relative position	འབྲེལ་བ་ཡོད་པའི་གནས་ས།
+Size	ཚད།
+WIDGET	ཝི་གེཊི།
+Layer	བང་རིམ།
+MDI-Z-order	ཨེམ་ཌི་ཨའི་-ཛེཌི་-གོ་རིམ།
+Alpha	ཨཱལ་ཕ།
+Absolute position	གནས་ས་ཡང་དག
+Component	ཆ་ཤས།(_m)
+Desktop	ཌེགསི་ཊོཔ་ (_K)
+Locale:	ཉེ་གནས།
+Document	ཡིག་ཆ་ (_D)
+Hyperlink	ཧའི་པར་ལིངཀ་
+Hypertext	ཚད་བརྒལ་ཚིག་ཡིག(_Y)
+Position	གནས་ས།
+Description	འགྲེལ་བཤད།
+Locale	ལོ་ཀེེལ་
+Image	གཟུགས་བརྙན།(_I)
+Login Helper	ནང་བསྐྱོད་ གྲོགས་རམ་(_G)
+Select All	ཆ་མཉམ་སེལ་འཐུ་འབད།
+Selection	སེལ་འཐུ་འབད་ནི།(_S)
+Streamable Content	རྒྱུན་རིམ་བཏུབ་པའི་ནང་དོན།(_r)
+Caption:	དཔར་བཤད
+Summary:	བཅུད་དོན
+Selected columns	སེལ་འཐུ་འབད་ཡོད་མི་ཀེར་ཐིག་ཚུ།
+Selected rows	སེལ་འཐུ་འབད་ཡོད་མི་གྲལ་ཐིག་ཚུ།
+Columns	ཀེར་ཐིག་ཚུ།
+Rows	གྲལ་ཐིག་ཚུ།
+Table Information	ཐིག་ཁྲམ་བརྡ་དོན
+name (x,y)	མིང་(ཨེགསི་ ཝའི)
+Header:	མགོ་ཡིག
