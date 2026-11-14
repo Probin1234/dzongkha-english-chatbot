@@ -14,6 +14,7 @@ import urllib.request
 
 from backend.dataset import exact as corpus_exact
 from backend.dataset import similar as corpus_similar
+from backend.names import in_dzongkha, replace_english
 from backend.textbook import TEXTBOOK
 
 MODEL = "grok-4.5"
@@ -31,7 +32,11 @@ Writing rules, from Bhutanese orthography (traditional spelling, the form kept b
 - Put a space between words, as in printed Dzongkha.
 - End every sentence and every line of a poem with a shad །
 - A poem is one verse per line.
-- No English letters inside the Dzongkha except a person's name.
+- Never leave English letters in the Dzongkha. A person's name is written in Dzongkha script too.
+  Tshering Dorji is ཚེ་རིང་ རྡོ་རྗེ་. Arjun Rai is ཨར་ཇུན་ རའི་.
+  I am Tshering Dorji: ང་ ཚེ་རིང་ རྡོ་རྗེ་ ཨིན།
+  I am Arjun Rai: ང་ ཨར་ཇུན་ རའི་ ཨིན།
+  My name is Karma: ངེའི་ མིང་ ཀརྨ་ ཨིན།
 
 Grammar, from The Grammar of Dzongkha (van Driem and Karma Tshering, Dzongkha Development Commission):
 - Word order is subject, object, verb. Postpositions come after the noun.
@@ -101,6 +106,7 @@ def normalize(text: str) -> str:
 
 def _format_dzongkha(text: str) -> str:
     """School-book shape: tsheg stays, each line ends with a shad."""
+    text = replace_english(text)
     lines = [line.strip() for line in text.replace("\r", "").split("\n") if line.strip()]
     shaped = []
     for line in lines:
@@ -118,6 +124,48 @@ def _pack(dzongkha: str, roman: str, gloss: str) -> dict:
     return {"dzongkha": _format_dzongkha(dzongkha), "roman": roman.strip(), "gloss": gloss.strip()}
 
 
+NOT_A_NAME = {
+    "a", "an", "the", "fine", "ok", "okay", "good", "well", "happy", "sad",
+    "student", "teacher", "boy", "girl", "man", "woman", "doctor", "here",
+    "there", "going", "from", "not", "very", "really", "busy", "tired",
+    "hungry", "sick", "sorry", "ready", "and", "or",
+}
+
+
+def _name_line(key: str) -> dict | None:
+    match = re.fullmatch(r"(i am|i'm|my name is|he is|she is|this is) ([a-z][a-z'\-]*(?: [a-z][a-z'\-]*){0,3})", key)
+    if not match:
+        return None
+    words = match.group(2).split()
+    if any(word in NOT_A_NAME for word in words):
+        return None
+    shown = " ".join(part[:1].upper() + part[1:] for part in match.group(2).split())
+    spelled = " ".join(in_dzongkha(word) for word in words)
+    kind = match.group(1)
+    if kind == "my name is":
+        dzongkha = f"ངེའི་ མིང་ {spelled} ཨིན།"
+        roman = f"Ngei ming {shown} inn."
+        gloss = f"My name is {shown}."
+    elif kind == "he is":
+        dzongkha = f"ཁོ་ {spelled} ཨིན།"
+        roman = f"Kho {shown} inn."
+        gloss = f"He is {shown}."
+    elif kind == "she is":
+        dzongkha = f"ཁོ་མོ་ {spelled} ཨིན།"
+        roman = f"Khomo {shown} inn."
+        gloss = f"She is {shown}."
+    elif kind == "this is":
+        dzongkha = f"འདི་ {spelled} ཨིན།"
+        roman = f"Di {shown} inn."
+        gloss = f"This is {shown}."
+    else:
+        dzongkha = f"ང་ {spelled} ཨིན།"
+        roman = f"Nga {shown} inn."
+        gloss = f"I am {shown}."
+    return _pack(dzongkha, roman, gloss)
+    return {"dzongkha": _format_dzongkha(dzongkha), "roman": roman.strip(), "gloss": gloss.strip()}
+
+
 def translate(english: str, history: list[dict] | None = None, taught: list[dict] | None = None) -> dict:
     key = normalize(english)
     for row in taught or []:
@@ -132,6 +180,9 @@ def translate(english: str, history: list[dict] | None = None, taught: list[dict
     known = corpus_exact(english)
     if known:
         return _pack(known, "", key[:1].upper() + key[1:] + ".")
+    named = _name_line(key)
+    if named:
+        return named
 
     api_key = os.environ.get("XAI_API_KEY", "").strip()
     if not api_key:
