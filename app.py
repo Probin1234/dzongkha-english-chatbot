@@ -336,8 +336,10 @@ def admin(user: dict) -> None:
         gloss = st.text_input("Meaning")
         if st.form_submit_button("Save phrase"):
             error = db.add_glossary(english, dzongkha, roman, gloss)
-            st.error(error) if error else st.success("Saved.")
-            if not error:
+            if error:
+                st.error(error)
+            else:
+                st.success("Saved.")
                 st.rerun()
     taught = db.glossary()
     if taught:
