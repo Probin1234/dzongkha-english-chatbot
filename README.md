@@ -1,4 +1,4 @@
-# Dzongkha English Chatbot
+# Dzongkha English Chatbot — Druk Kha
 
 A small website where you type in English and the reply comes back in spoken Bhutanese Dzongkha, with the pronunciation and the English meaning under it.
 
