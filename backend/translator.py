@@ -1,7 +1,8 @@
-"""Turn English into spoken Bhutanese Dzongkha.
 
-The model is Grok. The instruction set forces Bhutanese Dzongkha (dzo),
-not Central Tibetan. A few everyday lines are locked so they cannot drift.
+"""Druk Kha translation engine.
+
+English question -> Groq answer -> CST Dzongkha
+-> Romanized pronunciation -> English meaning.
 """
 
 from __future__ import annotations
@@ -9,310 +10,626 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 import urllib.error
 import urllib.request
 
-from backend.dataset import exact as corpus_exact
-from backend.dataset import similar as corpus_similar
-from backend.names import in_dzongkha, replace_english
-from backend.textbook import TEXTBOOK
+from http.cookiejar import CookieJar
+from urllib.request import HTTPCookieProcessor, build_opener
 
-MODEL = "grok-4.5"
-API_URL = "https://api.x.ai/v1/chat/completions"
+MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
 
-SYSTEM = """You are Druk Kha, a Bhutanese assistant. The user writes in English. Understand the request, then answer in spoken Bhutanese Dzongkha as it is written in Bhutanese school books.
+CST_PAGE = "https://nlp.cst.edu.bt/nmt/"
+CST_URL = "https://nlp.cst.edu.bt/nmt/api/"
 
-Do the task. Do not translate the instruction back.
-- A greeting is answered with the greeting.
-- "How do you say X" means translate X.
-- "Write a poem about a flower" means write the poem about the flower (མེ་ཏོག་). The gloss is the English of that poem.
-
-Writing rules, from Bhutanese orthography (traditional spelling, the form kept by the Dzongkha Development Commission grammar, not a phonetic respelling):
-- Put a tsheg ་ between syllables: སྐུ་གཟུགས་ not སྐུགཟུགས and never ཀུ་ཟུ་.
-- Put a space between words, as in printed Dzongkha.
-- End every sentence and every line of a poem with a shad །
-- A poem is one verse per line.
-- Never leave English letters in the Dzongkha. A person's name is written in Dzongkha script too.
-  Tshering Dorji is ཚེ་རིང་ རྡོ་རྗེ་. Arjun Rai is ཨར་ཇུན་ རའི་.
-  I am Tshering Dorji: ང་ ཚེ་རིང་ རྡོ་རྗེ་ ཨིན།
-  I am Arjun Rai: ང་ ཨར་ཇུན་ རའི་ ཨིན།
-  My name is Karma: ངེའི་ མིང་ ཀརྨ་ ཨིན།
-
-Grammar, from The Grammar of Dzongkha (van Driem and Karma Tshering, Dzongkha Development Commission):
-- Word order is subject, object, verb. Postpositions come after the noun.
-- Identity, "am/is/are" a noun: ཨིན།  Negative མེན།  Question ཨིན་ན།
-  ང་ སློབ་ཕྲུག་ ཨིན།  I am a student.
-- Location, possession, and "how someone is": ཡོད།  Negative མེད།
-  ང་ ལེགས་ཤོམ་ སྦེ་ ཡོད།  I am fine.
-- Something the speaker has just seen can use འདུག།  Do not use it as a general "to be".
-- "To" or "for": ལུ་    Agent "by": གིས་    Of: གི་    Manner: སྦེ་
-- Infinitive "to do": verb + ནི་    འགྱོ་ནི་ to go, སླབ་ནི་ to say.
-- Ongoing action: verb + དོ་ ཨིན། or verb + པའི་སྒང་ ཨིན།
-- Completed action the speaker knows: verb + ཅི། or ཡི།
-- Question words: ག་ཅི་ what, ག་ཏེ་ where, ག་དེ་ how, ག་དེམ་ཅིག་ how much, ག་ཨ་ who.
-- Polite greeting and thanks take ལགས།
-- Spell place names the school way: Thimphu ཐིམ་ཕུག་  Bhutan འབྲུག་  flower མེ་ཏོག་  student སློབ་ཕྲུག་  teacher སློབ་དཔོན་
-- I ང་  you ཁྱོད་  he ཁོ་  she ཁོ་མོ་  we ང་བཅས་  this འདི་  that དེ་
-
-Never write Tibetan:
-- བཀའ་དྲིན་མེད།  ཐུགས་རྗེ་ཆེ།  ཁྱེད་རང་  ཡིན།  རེད།  ཡིན་པས།  ཡོད་པས།  ཡོད་རེད།  བདེ་པོ་ཡིན།  ཀུ་ཟུ་བཟང་པོ།
-
-Fixed lines when that is really what they asked:
-- Hello: སྐུ་གཟུགས་བཟང་པོ་ལགས། / Kuzuzangpo la
-- How are you?: ཁྱོད་ག་དེ་སྦེ་ཡོད། / Chö gadey be yö?
-- I am fine: ང་ལེགས་ཤོམ་སྦེ་ཡོད། / Nga lekshom be yö
-- Thank you: བཀའ་དྲིན་ཆེ་ལགས། / Kadrinche la
-- You're welcome: རྗེམ་པ་ལེགས་སོ། / Jembalaekso
-- Yes: ཨིན། / Inn    No: མེན། / Men
-
-"roman" is how a person in Bhutan reads the line aloud, with the same line breaks. Not Wylie.
-"gloss" is the English of what you wrote.
-Return only JSON: {"dzongkha":"...","roman":"...","gloss":"..."}"""
-
-LOCKED = {
-    "hello": ("སྐུ་གཟུགས་བཟང་པོ་ལགས།", "Kuzuzangpo la", "Hello."),
-    "hi": ("སྐུ་གཟུགས་བཟང་པོ་ལགས།", "Kuzuzangpo la", "Hello."),
-    "hey": ("སྐུ་གཟུགས་བཟང་པོ་ལགས།", "Kuzuzangpo la", "Hello."),
-    "good morning": ("སྐུ་གཟུགས་བཟང་པོ་ལགས།", "Kuzuzangpo la", "Good morning."),
-    "how are you": ("ཁྱོད་ག་དེ་སྦེ་ཡོད།", "Chö gadey be yö?", "How are you?"),
-    "i am fine": ("ང་ལེགས་ཤོམ་སྦེ་ཡོད།", "Nga lekshom be yö", "I am fine."),
-    "i'm fine": ("ང་ལེགས་ཤོམ་སྦེ་ཡོད།", "Nga lekshom be yö", "I am fine."),
-    "thank you": ("བཀའ་དྲིན་ཆེ་ལགས།", "Kadrinche la", "Thank you."),
-    "thanks": ("བཀའ་དྲིན་ཆེ་ལགས།", "Kadrinche la", "Thank you."),
-    "thank you so much": ("བཀའ་དྲིན་ཆེ་ལགས།", "Kadrinche la", "Thank you so much."),
-    "you're welcome": ("རྗེམ་པ་ལེགས་སོ།", "Jembalaekso", "You're welcome."),
-    "you are welcome": ("རྗེམ་པ་ལེགས་སོ།", "Jembalaekso", "You're welcome."),
-    "yes": ("ཨིན།", "Inn", "Yes."),
-    "no": ("མེན།", "Men", "No."),
+KNOWN = {
+    "hello": (
+        "སྐུ་གཟུགས་བཟང་པོ་ལགས།",
+        "Kuzuzangpo la",
+        "Hello!",
+    ),
+    "hi": (
+        "སྐུ་གཟུགས་བཟང་པོ་ལགས།",
+        "Kuzuzangpo la",
+        "Hello!",
+    ),
 }
 
-TIBETAN = (
-    "བཀའ་དྲིན་མེད",
-    "ཐུགས་རྗེ",
-    "ཁྱེད་རང",
-    "ཡིན་པས",
-    "ཡོད་པས",
-    "ཡོད་རེད",
-    "བདེ་པོ་ཡིན",
-    "ཀུ་ཟུ་བཟང",
-)
+DZONGKHA_PATTERN = re.compile(r"[\u0F00-\u0FFF]")
 
 
-def normalize(text: str) -> str:
-    cleaned = text.strip().lower().replace("’", "'")
-    cleaned = re.sub(r"[.!?]+$", "", cleaned).strip()
-    return re.sub(r"\s+", " ", cleaned)
+# ============================================================
+# GROQ
+# ============================================================
 
+def _groq(messages, max_tokens=1500, temperature=0.3):
+    from groq import Groq
 
-def _format_dzongkha(text: str) -> str:
-    """School-book shape: tsheg stays, each line ends with a shad."""
-    text = replace_english(text)
-    lines = [line.strip() for line in text.replace("\r", "").split("\n") if line.strip()]
-    shaped = []
-    for line in lines:
-        line = re.sub(r"[ \t]+", " ", line)
-        line = line.replace("༌", "་")
-        if line.endswith("་"):
-            line = line[:-1] + "།"
-        elif not line.endswith(("།", "༎")):
-            line += "།"
-        shaped.append(line)
-    return "\n".join(shaped)
+    api_key = os.getenv("GROQ_API_KEY", "").strip()
 
-
-def _pack(dzongkha: str, roman: str, gloss: str) -> dict:
-    return {"dzongkha": _format_dzongkha(dzongkha), "roman": roman.strip(), "gloss": gloss.strip()}
-
-
-NOT_A_NAME = {
-    "a", "an", "the", "fine", "ok", "okay", "good", "well", "happy", "sad",
-    "student", "teacher", "boy", "girl", "man", "woman", "doctor", "here",
-    "there", "going", "from", "not", "very", "really", "busy", "tired",
-    "hungry", "sick", "sorry", "ready", "and", "or",
-}
-
-
-def _name_line(key: str) -> dict | None:
-    match = re.fullmatch(r"(i am|i'm|my name is|he is|she is|this is) ([a-z][a-z'\-]*(?: [a-z][a-z'\-]*){0,3})", key)
-    if not match:
-        return None
-    words = match.group(2).split()
-    if any(word in NOT_A_NAME for word in words):
-        return None
-    shown = " ".join(part[:1].upper() + part[1:] for part in match.group(2).split())
-    spelled = " ".join(in_dzongkha(word) for word in words)
-    kind = match.group(1)
-    if kind == "my name is":
-        dzongkha = f"ངེའི་ མིང་ {spelled} ཨིན།"
-        roman = f"Ngei ming {shown} inn."
-        gloss = f"My name is {shown}."
-    elif kind == "he is":
-        dzongkha = f"ཁོ་ {spelled} ཨིན།"
-        roman = f"Kho {shown} inn."
-        gloss = f"He is {shown}."
-    elif kind == "she is":
-        dzongkha = f"ཁོ་མོ་ {spelled} ཨིན།"
-        roman = f"Khomo {shown} inn."
-        gloss = f"She is {shown}."
-    elif kind == "this is":
-        dzongkha = f"འདི་ {spelled} ཨིན།"
-        roman = f"Di {shown} inn."
-        gloss = f"This is {shown}."
-    else:
-        dzongkha = f"ང་ {spelled} ཨིན།"
-        roman = f"Nga {shown} inn."
-        gloss = f"I am {shown}."
-    return _pack(dzongkha, roman, gloss)
-    return {"dzongkha": _format_dzongkha(dzongkha), "roman": roman.strip(), "gloss": gloss.strip()}
-
-
-def translate(english: str, history: list[dict] | None = None, taught: list[dict] | None = None) -> dict:
-    key = normalize(english)
-    for row in taught or []:
-        if normalize(row["english"]) == key:
-            return _pack(row["dzongkha"], row["roman"], row["gloss"])
-    for sample, dzongkha, roman, gloss in TEXTBOOK:
-        if normalize(sample) == key:
-            return _pack(dzongkha, roman, gloss)
-    if key in LOCKED:
-        dzo, roman, gloss = LOCKED[key]
-        return _pack(dzo, roman, gloss)
-    known = corpus_exact(english)
-    if known:
-        return _pack(known, "", key[:1].upper() + key[1:] + ".")
-    named = _name_line(key)
-    if named:
-        return named
-
-    api_key = os.environ.get("XAI_API_KEY", "").strip()
     if not api_key:
-        raise RuntimeError("The language model key is missing. Add XAI_API_KEY and restart.")
+        raise RuntimeError("GROQ_API_KEY is missing.")
 
-    messages = [{"role": "system", "content": _system(taught or [])}]
-    refs = corpus_similar(english)
-    if refs:
-        lines = "\n".join(f"- {en} → {dz}" for en, dz in refs)
-        messages[0]["content"] += (
-            "\n\nThese lines are from a downloaded Bhutanese Dzongkha corpus (OPUS). "
-            "If the user asked for the same meaning, answer with that Dzongkha. "
-            "Otherwise copy the spelling of any word that also appears there. "
-            "Do not reply with a software menu unless they asked for one.\n"
-            + lines
-        )
-    for turn in (history or [])[-6:]:
-        if turn["role"] == "user":
-            messages.append({"role": "user", "content": turn["english"]})
-        elif turn.get("dzongkha"):
-            messages.append(
-                {
-                    "role": "assistant",
-                    "content": json.dumps(
-                        {
-                            "dzongkha": turn["dzongkha"],
-                            "roman": turn.get("roman") or "",
-                            "gloss": turn.get("gloss") or "",
-                        },
-                        ensure_ascii=False,
-                    ),
-                }
-            )
-    messages.append({"role": "user", "content": english.strip()})
-
-    raw = _complete(api_key, messages)
-    parsed = _parse(raw)
-    if _bad(parsed["dzongkha"]) or _echoes_task(english, parsed):
-        messages.append({"role": "assistant", "content": raw})
-        messages.append(
-            {
-                "role": "user",
-                "content": (
-                    "That did not do the task. If they asked for a poem or a description, "
-                    "write that content in spoken Bhutanese Dzongkha. Do not translate their instruction. "
-                    "A poem about a flower must mention the flower (མེ་ཏོག་). "
-                    "The gloss must be the English of the poem or answer, not the instruction. "
-                    "Never use Tibetan such as བཀའ་དྲིན་མེད། or ཐུགས་རྗེ་ཆེ།."
-                ),
-            }
-        )
-        parsed = _parse(_complete(api_key, messages))
-    if _bad(parsed["dzongkha"]):
-        raise RuntimeError("The model answered in Tibetan. Try the sentence again.")
-    if _echoes_task(english, parsed):
-        raise RuntimeError("The model repeated the request instead of answering it. Try once more.")
-    return parsed
-
-
-def _system(taught: list[dict]) -> str:
-    book = "\n".join(
-        f"- {english}: {dzongkha} / {roman}" for english, dzongkha, roman, _gloss in TEXTBOOK
+    client = Groq(
+        api_key=api_key,
+        timeout=90.0,
     )
-    text = SYSTEM + "\n\nCopy these spellings when the meaning is the same. Put a space between words:\n" + book
-    if not taught:
-        return text
-    lines = "\n".join(
-        f"- {row['english']}: {row['dzongkha']} / {row['roman']}" for row in taught[:40]
+
+    response = client.chat.completions.create(
+        model=os.getenv("GROQ_MODEL", MODEL),
+        messages=messages,
+        temperature=temperature,
+        max_completion_tokens=max(max_tokens, 3000),
+        reasoning_effort="low",
     )
-    return text + "\n\nAdmin-taught lines. Use these exactly when the English matches:\n" + lines
+
+    if not response.choices:
+        raise RuntimeError("Groq returned no choices.")
+
+    answer = response.choices[0].message.content
+
+    if not answer or not answer.strip():
+        raise RuntimeError(
+            "Groq returned an empty answer."
+        )
+
+    return answer.strip()
 
 
-def _complete(api_key: str, messages: list[dict]) -> str:
-    payload = json.dumps(
-        {
-            "model": MODEL,
-            "temperature": 0.7,
-            "max_tokens": 900,
-            "response_format": {"type": "json_object"},
-            "messages": messages,
-        }
-    ).encode()
+# ============================================================
+# TEXT CLEANING
+# ============================================================
+
+def clean_english(text):
+    """Prepare plain English for CST translation."""
+
+    text = re.sub(
+        r"[\u0F00-\u0FFF]+",
+        " ",
+        text,
+    )
+
+    replacements = {
+        "\u2014": ", ",
+        "\u2013": "-",
+        "\u2018": "'",
+        "\u2019": "'",
+        "\u201c": '"',
+        "\u201d": '"',
+        "\u2026": "...",
+        "\u00a0": " ",
+        "\u2022": "-",
+    }
+
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+
+    text = re.sub(
+        r"[\x00-\x08\x0b-\x1f]",
+        " ",
+        text,
+    )
+
+    text = re.sub(r"\s+", " ", text)
+
+    return text.strip()
+
+
+def split_sentences(text, max_chars=180):
+    """Split long English answers into short pieces."""
+
+    text = clean_english(text)
+
+    sentences = re.split(
+        r"(?<=[.!?])\s+",
+        text,
+    )
+
+    chunks = []
+
+    for sentence in sentences:
+        sentence = sentence.strip()
+
+        if not sentence:
+            continue
+
+        if len(sentence) <= max_chars:
+            chunks.append(sentence)
+            continue
+
+        current = ""
+
+        for word in sentence.split():
+            candidate = (
+                current + " " + word
+            ).strip()
+
+            if (
+                len(candidate) > max_chars
+                and current
+            ):
+                chunks.append(current)
+                current = word
+            else:
+                current = candidate
+
+        if current:
+            chunks.append(current)
+
+    return chunks
+
+
+# ============================================================
+# CST HTTP REQUEST
+# ============================================================
+
+def _request_json(
+    url,
+    payload,
+    headers,
+    timeout=60,
+    opener=None,
+):
     request = urllib.request.Request(
-        API_URL,
-        data=payload,
-        headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"},
+        url,
+        data=json.dumps(
+            payload,
+            ensure_ascii=False,
+        ).encode("utf-8"),
+        headers=headers,
         method="POST",
     )
+
     try:
-        with urllib.request.urlopen(request, timeout=70) as response:
-            body = json.loads(response.read().decode())
+        if opener is None:
+            response = urllib.request.urlopen(
+                request,
+                timeout=timeout,
+            )
+        else:
+            response = opener.open(
+                request,
+                timeout=timeout,
+            )
+
+        with response as resp:
+            return json.loads(
+                resp.read().decode("utf-8")
+            )
+
     except urllib.error.HTTPError as exc:
-        detail = exc.read().decode(errors="replace")[:240]
-        raise RuntimeError(f"The model did not answer ({exc.code}). {detail}") from exc
+        detail = exc.read().decode(
+            "utf-8",
+            errors="replace",
+        )[:300]
+
+        raise RuntimeError(
+            f"CST HTTP {exc.code}: {detail}"
+        ) from exc
+
     except urllib.error.URLError as exc:
-        raise RuntimeError("Could not reach the language model. Check the internet and try again.") from exc
-    return body["choices"][0]["message"]["content"]
+        raise RuntimeError(
+            f"CST network error: {exc.reason}"
+        ) from exc
 
 
-def _parse(raw: str) -> dict:
-    text = raw.strip()
-    text = re.sub(r"^```(?:json)?\s*", "", text)
-    text = re.sub(r"\s*```$", "", text)
+def _cst_translate_chunk(text):
+    """Translate one short English section using CST."""
+
+    opener = build_opener(
+        HTTPCookieProcessor(CookieJar())
+    )
+
     try:
-        data = json.loads(text)
-    except json.JSONDecodeError as exc:
-        raise RuntimeError("The model sent a reply that could not be read.") from exc
-    dzongkha = str(data.get("dzongkha") or "").strip()
-    roman = str(data.get("roman") or "").strip()
-    gloss = str(data.get("gloss") or "").strip()
-    if not dzongkha:
-        raise RuntimeError("The model sent an empty Dzongkha line.")
-    return _pack(dzongkha, roman, gloss)
+        with opener.open(
+            CST_PAGE,
+            timeout=20,
+        ) as response:
+            page = response.read().decode(
+                "utf-8",
+                errors="replace",
+            )
+
+    except Exception as exc:
+        raise RuntimeError(
+            "Cannot reach CST website."
+        ) from exc
+
+    token_match = re.search(
+        r'name=["\']csrfmiddlewaretoken["\']'
+        r'\s+value=["\']([^"\']+)',
+        page,
+    )
+
+    if not token_match:
+        token_match = re.search(
+            r'csrfmiddlewaretoken\s*:\s*'
+            r'["\']([^"\']+)',
+            page,
+        )
+
+    if not token_match:
+        raise RuntimeError(
+            "CST CSRF token not found."
+        )
+
+    token = token_match.group(1)
+
+    result = _request_json(
+        CST_URL,
+        {
+            "src_lang": "eng_Latn",
+            "tgt_lang": "dzo_Tibt",
+            "text": text,
+            "csrfmiddlewaretoken": token,
+        },
+        {
+            "Content-Type": "application/json",
+            "X-CSRFToken": token,
+            "Referer": CST_PAGE,
+        },
+        opener=opener,
+    )
+
+    if not isinstance(result, dict):
+        raise RuntimeError(
+            "CST returned an unexpected response."
+        )
+
+    if result.get("error"):
+        raise RuntimeError(
+            f"CST: {result['error']}"
+        )
+
+    translated = result.get("text", "")
+
+    if not isinstance(translated, str):
+        translated = ""
+
+    translated = translated.strip()
+
+    if not DZONGKHA_PATTERN.search(translated):
+        raise RuntimeError(
+            "CST returned no Dzongkha translation."
+        )
+
+    return translated
 
 
-TASK = re.compile(
-    r"\b(write|poem|story|describe|explain|tell|about|compose|sing|essay|paragraph|joke)\b",
-    re.I,
-)
+# ============================================================
+# BACKUP TRANSLATION
+# ============================================================
+
+def backup_translate(text, reference=""):
+    """Use Groq if CST cannot translate a section."""
+
+    prompt = (
+        "Translate the supplied English into Bhutanese "
+        "Dzongkha as used in Bhutan. "
+        "Do not use Tibetan conversational grammar. "
+        "Use natural Bhutanese Dzongkha wording. "
+        "Do not explain anything. "
+        "Output only the Dzongkha translation. "
+        "Do not include English or pronunciation.\n\n"
+        "Verified examples, if provided:\n"
+        + reference
+    )
+
+    result = _groq(
+        [
+            {
+                "role": "system",
+                "content": prompt,
+            },
+            {
+                "role": "user",
+                "content": text,
+            },
+        ],
+        max_tokens=1500,
+        temperature=0.1,
+    )
+
+    if not DZONGKHA_PATTERN.search(result):
+        raise RuntimeError(
+            "Backup translation did not return "
+            "Dzongkha script."
+        )
+
+    return result
 
 
-def _bad(dzongkha: str) -> bool:
-    return any(marker in dzongkha for marker in TIBETAN)
+def cst_translate(text, reference=""):
+    """Translate with retries and controlled fallback."""
+
+    chunks = split_sentences(text)
+
+    if not chunks:
+        raise RuntimeError(
+            "No English answer to translate."
+        )
+
+    output = []
+
+    for index, chunk in enumerate(chunks, 1):
+        translated = None
+
+        for attempt in range(2):
+            try:
+                translated = _cst_translate_chunk(
+                    chunk
+                )
+                break
+
+            except Exception as exc:
+                print(
+                    f"CST section {index}/{len(chunks)} "
+                    f"attempt {attempt + 1}: {exc}"
+                )
+
+                if attempt == 0:
+                    time.sleep(0.5)
+
+        if translated is None:
+            try:
+                translated = backup_translate(
+                    chunk,
+                    reference,
+                )
+
+                print(
+                    "WARNING: Groq backup translation "
+                    f"used for section {index}. "
+                    "Output needs human verification."
+                )
+
+            except Exception as exc:
+                raise RuntimeError(
+                    f"Translation failed at section "
+                    f"{index}/{len(chunks)}: {exc}"
+                ) from exc
+
+        output.append(translated)
+
+    return "\n".join(output)
 
 
-def _echoes_task(english: str, parsed: dict) -> bool:
-    if not TASK.search(english):
-        return False
-    gloss = normalize(parsed.get("gloss") or "")
-    key = normalize(english)
-    if not gloss:
-        return True
-    return gloss == key or key in gloss
+# ============================================================
+# PRONUNCIATION
+# ============================================================
+
+def romanize_dzongkha(dzongkha, reference=""):
+    """Generate pronunciation using English letters."""
+
+    sentences = [
+        part.strip()
+        for part in re.split(
+            r"(?<=།)\s*",
+            dzongkha,
+        )
+        if part.strip()
+    ]
+
+    if not sentences:
+        sentences = [dzongkha]
+
+    results = []
+
+    for sentence in sentences:
+        prompt = (
+            "You are helping students pronounce "
+            "spoken Bhutanese Dzongkha. "
+            "Convert the supplied Dzongkha sentence "
+            "into readable pronunciation using "
+            "English alphabet letters only. "
+            "Do not translate into English. "
+            "Do not use Tibetan script. "
+            "Do not use Wylie transliteration. "
+            "Use Bhutanese spoken pronunciation. "
+            "Preserve the meaning and word order. "
+            "Output only the pronunciation text.\n\n"
+            "Examples:\n"
+            "སྐུ་གཟུགས་བཟང་པོ་ལགས། "
+            "= Kuzuzangpo la\n"
+            "བཀའ་དྲིན་ཆེ། "
+            "= Kadrinche\n\n"
+            "Additional verified examples:\n"
+            + reference
+        )
+
+        try:
+            roman = _groq(
+                [
+                    {
+                        "role": "system",
+                        "content": prompt,
+                    },
+                    {
+                        "role": "user",
+                        "content": sentence,
+                    },
+                ],
+                max_tokens=1800,
+                temperature=0.1,
+            )
+
+            roman = roman.strip()
+
+            # Remove accidental code fences.
+            roman = re.sub(
+                r"^```[a-zA-Z]*\s*|\s*```$",
+                "",
+                roman,
+            ).strip()
+
+            # Do not display Dzongkha script
+            # inside the pronunciation field.
+            if DZONGKHA_PATTERN.search(roman):
+                return ""
+
+            if not re.search(r"[A-Za-z]", roman):
+                return ""
+
+            results.append(roman)
+
+        except Exception as exc:
+            print(
+                "Pronunciation error:",
+                exc,
+            )
+            return ""
+
+    return "\n".join(results)
+
+
+# ============================================================
+# CONVERSATION HISTORY
+# ============================================================
+
+def _history_messages(history):
+    messages = []
+
+    for turn in (history or [])[-10:]:
+        role = turn.get("role")
+
+        if role == "user":
+            content = turn.get("english") or ""
+
+        elif role == "assistant":
+            content = turn.get("gloss") or ""
+
+        else:
+            continue
+
+        if content:
+            messages.append(
+                {
+                    "role": role,
+                    "content": content,
+                }
+            )
+
+    return messages
+
+
+# ============================================================
+# MAIN TRANSLATION FUNCTION
+# ============================================================
+
+def translate(
+    english: str,
+    history=None,
+    taught=None,
+) -> dict:
+
+    prompt = english.strip()
+
+    if not prompt:
+        raise RuntimeError(
+            "Please enter a message."
+        )
+
+    key = re.sub(
+        r"[.!?]+$",
+        "",
+        prompt.lower(),
+    ).strip()
+
+    # Use verified greeting.
+    if key in KNOWN:
+        dz, roman, gloss = KNOWN[key]
+
+        return {
+            "dzongkha": dz,
+            "roman": roman,
+            "gloss": gloss,
+        }
+
+    # Build verified phrase references.
+    examples = []
+
+    for row in (taught or [])[:12]:
+        en = row.get("english", "")
+        dz = row.get("dzongkha", "")
+
+        if en and dz:
+            examples.append(
+                f"{en} -> {dz}"
+            )
+
+    reference = "\n".join(examples)
+
+    # Reuse an approved phrase for exact matches.
+    for row in (taught or []):
+        saved_english = " ".join(
+            row.get("english", "").lower().split()
+        )
+
+        current_english = " ".join(
+            prompt.lower().split()
+        )
+
+        if saved_english == current_english:
+            return {
+                "dzongkha": row.get(
+                    "dzongkha", ""
+                ),
+                "roman": row.get(
+                    "roman", ""
+                ),
+                "gloss": row.get(
+                    "gloss", prompt
+                ),
+            }
+
+    # Step 1: Understand the question in English.
+    system_prompt = (
+        "You are Druk Kha, a helpful AI assistant "
+        "for people in Bhutan. "
+        "Answer the user's actual question in "
+        "simple, clear English. "
+        "Do not merely translate their question. "
+        "Use short, natural sentences. "
+        "Write entirely in English. "
+        "Do not insert Dzongkha or Tibetan script. "
+        "Avoid unusual punctuation, long paragraphs "
+        "and complicated expressions. "
+        "Provide accurate, useful answers. "
+        "Keep simple questions concise."
+    )
+
+    messages = [
+        {
+            "role": "system",
+            "content": system_prompt,
+        },
+        *_history_messages(history),
+        {
+            "role": "user",
+            "content": prompt,
+        },
+    ]
+
+    english_answer = _groq(
+        messages,
+        max_tokens=1500,
+    )
+
+    # Step 2: Translate into Bhutanese Dzongkha.
+    dzongkha = cst_translate(
+        english_answer,
+        reference,
+    )
+
+    # Step 3: Generate pronunciation.
+    roman = romanize_dzongkha(
+        dzongkha,
+        reference,
+    )
+
+    # Step 4: Return all three fields.
+    return {
+        "dzongkha": dzongkha,
+        "roman": roman,
+        "gloss": english_answer,
+    }
