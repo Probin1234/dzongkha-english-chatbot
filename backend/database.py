@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import os
 import secrets
 import sqlite3
 from pathlib import Path
@@ -11,10 +12,10 @@ from backend.textbook import TEXTBOOK
 
 DB_PATH = Path(__file__).resolve().parent.parent / "data" / "druk.db"
 
-ADMIN_EMAIL = "03230235@gmail.com"
-ADMIN_PASSWORD = "admin101"
-TEST_EMAIL = "test1@gmail.com"
-TEST_PASSWORD = "test101"
+ADMIN_EMAIL = os.getenv("DRUK_ADMIN_EMAIL", "").strip()
+ADMIN_PASSWORD = os.getenv("DRUK_ADMIN_PASSWORD", "")
+TEST_EMAIL = os.getenv("DRUK_TEST_EMAIL", "").strip()
+TEST_PASSWORD = os.getenv("DRUK_TEST_PASSWORD", "")
 
 
 def connect() -> sqlite3.Connection:
@@ -77,8 +78,10 @@ def init_db() -> None:
             );
             """
         )
-        _seed(conn, "Admin", ADMIN_EMAIL, ADMIN_PASSWORD, "admin")
-        _seed(conn, "Test user", TEST_EMAIL, TEST_PASSWORD, "user")
+        if ADMIN_EMAIL and ADMIN_PASSWORD:
+            _seed(conn, "Admin", ADMIN_EMAIL, ADMIN_PASSWORD, "admin")
+        if TEST_EMAIL and TEST_PASSWORD:
+            _seed(conn, "Test user", TEST_EMAIL, TEST_PASSWORD, "user")
         _seed_books(conn)
 
 
